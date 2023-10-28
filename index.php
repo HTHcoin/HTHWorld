@@ -1,92 +1,223 @@
-<?php
-session_start();
-include('includes/config.php');
-if(isset($_POST['login']))
-{
-$status='1';
-$email=$_POST['username'];
-$password=md5($_POST['password']);
-$sql ="SELECT email,password FROM users WHERE email=:email and password=:password and status=(:status)";
-$query= $dbh -> prepare($sql);
-$query-> bindParam(':email', $email, PDO::PARAM_STR);
-$query-> bindParam(':password', $password, PDO::PARAM_STR);
-$query-> bindParam(':status', $status, PDO::PARAM_STR);
-$query-> execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-if($query->rowCount() > 0)
-{
-$_SESSION['alogin']=$_POST['username'];
-echo "<script type='text/javascript'> document.location = 'homepage.php'; </script>";
-} else{
-  
-  echo "<script>alert('Invalid Details Or Account Not Confirmed');</script>";
-
-}
-
-}
-
-?>
-<!doctype html>
-<html lang="en" class="no-js">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonprofit Organization</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .dropdown-container {
+            text-align: center; /* Center the content horizontally */
+        }
 
-	
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-social.css">
-	<link rel="stylesheet" href="css/bootstrap-select.css">
-	<link rel="stylesheet" href="css/fileinput.min.css">
-	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+        .dropdown {
+            display: inline-block;
+            position: relative;
+            margin-right: 20px;
+        }
 
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .service {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .service.active {
+            display: block;
+        }
+
+        /* Styling for the dropdown links */
+        .dropdown-content a {
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            color: #333;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .about-container {
+            text-align: center;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .about-container h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .about-container p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .donate-container {
+            text-align: center; /* Center the content horizontally */
+        }
+        .donate-container {
+            text-align: center;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .donate-container h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .donate-container p {
+            font-size: 16px;
+            color: #777;
+        }
+
+    .donate-button {
+        display: inline-block;
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        margin: 10px;
+    }
+
+    .donate-button:hover {
+        background-color: #2773a4;
+    }
+    </style>
 </head>
+<body style="background-color: #333">
+    <header>
+        <h1>Welcome to HTH World</h1>
+        <p>Helping the Community Together</p>
+    </header>
 
-<body>
-	<div class="login-page bk-img">
-		<div class="form-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold mt-4x">Login</h1>
-						<div class="well row pt-2x pb-3x bk-light">
-							<div class="col-md-8 col-md-offset-2">
-								<form method="post">
+    <?php
+    // Include the navigation bar
+    include('navbar.php');
+    ?>
+</br>
+</br>
+    <main>
+        <div class="dropdown-container">
+    <div class="options-section">
+        <h2> HTH World</h2>
+        <p>At HTH We Fully Believe Everyone Desrves A Chance! Make A Change Today Or Seek Help Today!</p>
+    </div>
+        <div class="dropdown">
+            <h2>Get Involved!</h2>
+            <div class="dropdown-content">
+                <a href="#" class="show-service" data-service="donate">Donate</a>
+                <a href="#" class="show-service" data-service="fundraisers">Fundraisers</a>
+                <a href="#" class="show-service" data-service="volunteer">Volunteer</a>
+            </div>
+        </div>
 
-									<label for="" class="text-uppercase text-sm">Your Email</label>
-									<input type="text" placeholder="Username" name="username" class="form-control mb" required>
+        <div class="dropdown">
+    <h2>Need Assistance?</h2>
+    <div class="dropdown-content">
+        <a href="#" class="show-service" data-service="food-banks">Food Banks</a>
+        <a href="#" class="show-service" data-service="shelters">Shelters</a>
+        <a href="#" class="show-service" data-service="homeless">Homeless</a> <!-- New service link for Homeless -->
+        <a href="#" class="show-service" data-service="charities">Charities</a>
+    </div>
+</div>
 
-									<label for="" class="text-uppercase text-sm">Password</label>
-									<input type="password" placeholder="Password" name="password" class="form-control mb" required>
-									<button class="btn btn-primary btn-block" name="login" type="submit">LOGIN</button>
-								</form>
-								<br>
-								<p>Don't Have an Account? <a href="register.php" >Signup</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Loading Scripts -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap-select.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.dataTables.min.js"></script>
-	<script src="js/dataTables.bootstrap.min.js"></script>
-	<script src="js/Chart.min.js"></script>
-	<script src="js/fileinput.js"></script>
-	<script src="js/chartData.js"></script>
-	<script src="js/main.js"></script>
+        <div class="service" id="donate">
+            <h3>Donate Today</h3>
+            <p>100% of your donation goes towards helping the homeless, please donate today!</p>
+            <a href="donate.php" class="service-link">Donate Now</a>
+        </div>
 
+        <div class="service" id="fundraisers">
+            <h3>Fundraisers</h3>
+            <p>Donate to a specific cause!</p>
+            <a href="fundraiser.php" class="service-link">Fundraisers</a>
+        </div>
+
+        <div class="service" id="volunteer">
+            <h3>Volunteer</h3>
+            <p>Join the HTH Family and become a Volunteer today and help make an impact in your area!</p>
+            <a href="volunteer.php" class="service-link">Volunteer Now</a>
+        </div>
+
+       <div class="service" id="homeless">
+           <h3>Homeless Services</h3>
+           <p>Provide assistance to homeless individuals and make a difference in their lives.</p>
+           <a href="homeless.php" class="service-link">Learn More</a>
+        </div>
+
+        <div class="service" id="food-banks">
+            <h3>Food Banks</h3>
+            <p>Need to locate your closest food bank? Check out HTH World!</p>
+            <a href="world.php?service_type=food_bank" class="service-link">HTH World</a>
+        </div>
+
+        <div class="service" id="shelters">
+            <h3>Shelters</h3>
+            <p>Need Shelter? Check out HTH World!</p>
+            <a href="world.php?service_type=shelter" class="service-link">HTH World</a>
+        </div>
+
+        <div class="service" id="charities">
+            <h3>Charities</h3>
+            <p>Need to find a charity near you? Check out HTH World</p>
+            <a href="world.php?service_type=organization" class="service-link">HTH World</a>
+        </div>
+        </div>
+</br>
+</br>
+        <div class="about-container">
+            <h2>Our Goal</h2>
+            <p>HTH World is a platform where those who are less fortunate have an easy place to come when they need assistance. We believe in keeping things as simple as possible in order to achieve success!</p>
+        </div>
+    <div class="about-container">
+        <h2> Donate Right Now!</h2>
+        <p>100% of your donation goes towards helping the homeless, please donate today!</p>
+    </div>
+        <div class="donate-container">
+      <div class="donate-container">
+<!-- Stripe Donate Now Button -->
+<a href="https://buy.stripe.com/eVa00f4LjbLrfBu5kk" class="donate-button" target="_blank">Donate Now with Stripe</a>
+
+<!-- PayPal Donate Now Button -->
+<a href="https://www.paypal.com/paypalme/hthworldwide" class="donate-button" target="_blank">Donate Now with PayPal</a>
+        </div>
+</div>
+    </main>
+</br>
+</br>
+    <?php
+    // Include the footer
+    include('footer.php');
+    ?>
+
+    <script>
+        document.querySelectorAll('.show-service').forEach(function (element) {
+            element.addEventListener('click', function () {
+                var serviceId = this.getAttribute('data-service');
+                document.querySelectorAll('.service').forEach(function (service) {
+                    service.classList.remove('active');
+                });
+                document.getElementById(serviceId).classList.add('active');
+            });
+        });
+    </script>
 </body>
-
 </html>

@@ -1,0 +1,3 @@
+[submodule "vender/stripe/stripe.php"]
+	path = vender/stripe/stripe.php
+	url = https://github.com/michaelhdesigns/web

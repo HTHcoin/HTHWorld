@@ -1,0 +1,103 @@
+/* Styles for the page body */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles for the header section */
+.header {
+    background-color: #35424a;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* Styles for the page title */
+.page-title {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+/* Styles for the "Create New Volunteer" form */
+.create-volunteer-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.create-volunteer-form label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.create-volunteer-form input[type="text"],
+.create-volunteer-form input[type="email"],
+.create-volunteer-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-volunteer-form button {
+    background-color: #35424a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.create-volunteer-form button:hover {
+    background-color: #2d3e4b;
+}
+
+/* Compact form element styles */
+.create-volunteer-form label {
+    margin: 5px 0;
+}
+
+.create-volunteer-form input[type="text"],
+.create-volunteer-form input[type="email"],
+.create-volunteer-form textarea {
+    margin: 5px 0;
+}
+
+/* Adjust spacing between form elements */
+.create-volunteer-form label,
+.create-volunteer-form input,
+.create-volunteer-form textarea,
+.create-volunteer-form button {
+    margin: 5px 0;
+}
+
+
+/* Styles for the "Volunteers List" table */
+.volunteers-list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.volunteers-list-table th,
+.volunteers-list-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Styles for the success and error messages */
+.error-wrap {
+    padding: 10px;
+    margin: 0 0 20px 0;
+    background: #dd3d36;
+    color: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+

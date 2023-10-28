@@ -1,0 +1,19 @@
+    .left-section {
+        width: 30%;
+        display: flex;
+        left: 5%;
+        border: 1px solid #ccc; /* Add a border to the left section */
+        padding: 10px; /* Add some padding for spacing */
+    }
+
+    /* Add styles for the quest list */
+    .quest-list {
+        margin-left: 20px; /* Adjust this margin as needed */
+        border: 1px solid #ccc; /* Add a border to the quest list */
+        padding: 10px; /* Add some padding for spacing */
+    }
+
+    /* Clear the float to prevent layout issues in the following content */
+    .clear {
+        clear: both;
+    }

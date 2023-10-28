@@ -1,0 +1,37 @@
+/* Add these styles to center the main content */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Adjust the styles for the content inside the container */
+form {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Add this style to center the "Add Entry" form elements */
+form select,
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: left;
+}
+
+
+/* Add styles to center the messages */
+.success-message,
+.error-message {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+}

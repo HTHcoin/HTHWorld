@@ -650,6 +650,8 @@ li {
   bottom: 0;
   top: 60px;
   overflow-y: auto;
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
 }
 .ts-sidebar .hidden-side {
   display: none;
@@ -675,7 +677,7 @@ li {
 .ts-sidebar-menu .ts-label {
   color: #585c64;
   font-weight: bold;
-  padding: 8px 15px;
+  padding: 10px 15px; /* Adjust padding for consistency */
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 3px;
@@ -684,7 +686,7 @@ li {
 .ts-sidebar-menu a {
   display: block;
   text-decoration: none;
-  padding: 12px 15px;
+  padding: 10px 15px; /* Adjust padding for consistency */
   color: #fff;
 }
 .ts-sidebar-menu li {
@@ -707,11 +709,11 @@ li {
   max-height: 2000px;
 }
 .ts-sidebar-menu .open > a {
-  background: rgba(51, 56, 62, 0.35);
+  background: none;
 }
 .ts-sidebar-menu > .open > a {
-  background: #33383e;
-  border-left: 3px solid #37a6c4;
+  background: none;
+  border-left: none;
 }
 .ts-sidebar-menu .open > .more i {
   transform: rotate(180deg);
@@ -744,4 +746,50 @@ li {
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+.service {
+    /* Add styles for the text area */
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff; /* Background color for the text area */
+    position: relative; /* Set the .service div as a relative position container */
+    width: 250px;
+    height: 300px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+
+.service-image {
+    /* Set the background image */
+    background-image: url('images/donate.jpg');
+    background-size: cover; /* Adjust to your preference */
+    background-position: center center; /* Center the image */
+    width: 100%; /* Make sure the image covers the entire .service-image div */
+    height: 100%; /* Make sure the image covers the entire .service-image div */
+    filter: brightness(50%); /* Adjust the brightness of the image (optional) */
+    position: absolute; /* Position the image within the .service div */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Place it behind the text */
+}
+
+/* Style the text elements as needed */
+h3, p, .service-link {
+    /* Add styles for text (e.g., text color, font size, margin, etc.) */
+}
+
+.world {
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff; /* Background color for the text area */
+    position: relative; /* Set the .service div as a relative position container */
+    width: 250px;
+    height: 300px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
 }
