@@ -12,16 +12,13 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-USE HTHWorld;
+CREATE DATABASE IF NOT EXISTS hthworld;
+USE hthworld;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `HTHWorld`
---
 
 -- Table structure for table `admin`
 CREATE TABLE IF NOT EXISTS `admin` (
@@ -32,11 +29,18 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
+(1, 'admin', 'admin@admin.com', '9ae2be73b58b565bce3e47493a56e26a');
+
 -- Table structure for table `feedback`
 CREATE TABLE IF NOT EXISTS `feedback` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `sender` VARCHAR(50) NOT NULL,
-  `reciver` VARCHAR(50) NOT NULL,
+  `receiver` VARCHAR(50) NOT NULL,
   `title` VARCHAR(100) NOT NULL,
   `feedbackdata` VARCHAR(500) NOT NULL,
   `attachment` VARCHAR(50) NOT NULL,
@@ -47,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 CREATE TABLE IF NOT EXISTS `notification` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `notiuser` VARCHAR(50) NOT NULL,
-  `notireciver` VARCHAR(50) NOT NULL,
+  `notireceiver` VARCHAR(50) NOT NULL,
   `notitype` VARCHAR(50) NOT NULL,
   `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -232,18 +236,12 @@ CREATE TABLE IF NOT EXISTS `user_quests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Table structure for table `badges`
-CREATE TABLE IF NOT EXISTS `badges` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `badge_name` VARCHAR(100) NOT NULL,
-  `description` TEXT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 -- AUTO_INCREMENT definitions
 ALTER TABLE `admin`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE users MODIFY password VARCHAR(255) NOT NULL;
 
 ALTER TABLE `feedback`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT;
@@ -268,53 +266,6 @@ ALTER TABLE `quests`
 
 ALTER TABLE `user_quests`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT;
-
--- Add columns to the badges table to associate with users and quests
-ALTER TABLE badges
-MODIFY `user_id` INT(11);
-
-DELIMITER $$
-CREATE PROCEDURE AddForeignKeyIfNeeded()
-BEGIN
-  DECLARE fk_user_exists INT;
-  DECLARE fk_quest_exists INT;
-  
-  -- Check if 'fk_badges_user' constraint exists
-  SELECT COUNT(*) INTO fk_user_exists
-  FROM information_schema.TABLE_CONSTRAINTS
-  WHERE CONSTRAINT_SCHEMA = 'HTHWorld' -- Replace with your database name
-    AND TABLE_NAME = 'badges'
-    AND CONSTRAINT_NAME = 'fk_badges_user';
-
-  -- If the constraint doesn't exist, create it
-  IF fk_user_exists = 0 THEN
-    ALTER TABLE `badges`
-    ADD CONSTRAINT `fk_badges_user`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `users`(`id`)
-    ON DELETE CASCADE;
-  END IF;
-
-  -- Check if 'fk_badges_quest' constraint exists
-  SELECT COUNT(*) INTO fk_quest_exists
-  FROM information_schema.TABLE_CONSTRAINTS
-  WHERE CONSTRAINT_SCHEMA = 'HTHWorld' -- Replace with your database name
-    AND TABLE_NAME = 'badges'
-    AND CONSTRAINT_NAME = 'fk_badges_quest';
-
-  -- If the constraint doesn't exist, create it
-  IF fk_quest_exists = 0 THEN
-    ALTER TABLE `badges`
-    ADD CONSTRAINT `fk_badges_quest`
-    FOREIGN KEY (`quest_id`)
-    REFERENCES `quests`(`id`)
-    ON DELETE CASCADE;
-  END IF;
-END $$
-DELIMITER ;
-
--- Call the stored procedure to add foreign keys if needed
-CALL AddForeignKeyIfNeeded();
 
 
 COMMIT;

@@ -5,7 +5,7 @@ session_start();
 require 'vendor/autoload.php';
 
 // Stripe API Keys
-\Stripe\Stripe::setApiKey('YOUR_API_KEY_HERE');
+\Stripe\Stripe::setApiKey('YOUR_STRIPE_KEY_KEY');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['donate_amount'])) {
@@ -25,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } elseif ($payment_method == 'paypal') {
             // Replace 'client_id' and 'client_secret' with your PayPal API credentials
-            $client_id = 'YOUR_CLEITN_KEY_HERE';
-            $client_secret = 'YOUR_SECRET_KEY_HERE';
+            $client_id = 'YOU_PAYPAL_CLIENT_KEY';
+            $client_secret = 'YOUR_PAYPAL_SECRET_KEY';
 
             $paypal = new \PayPal\Rest\ApiContext(
                 new \PayPal\Auth\OAuthTokenCredential($client_id, $client_secret)

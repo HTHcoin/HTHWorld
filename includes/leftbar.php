@@ -8,6 +8,8 @@
 			</li>
 			<li><a href="homepage.php"><i class="fa fa-dashboard"></i> &nbsp;Dashboard</a>
 			</li>
+			<li><a href="wallet.php"><i class="fa fa-dollar"></i> &nbsp;Wallet</sup></a>
+			</li>
 			<li><a href="userQuests.php"><i class="fa fa-bolt"></i> &nbsp;Quests</a>
 			</li>
 			<li><a href="user_list.php"><i class="fa fa-user"></i> &nbsp;Users</a>

@@ -91,6 +91,23 @@ if(strlen($_SESSION['alogin']) == 0) {
             -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
         }
+
+/* Style for the balance and wallet address */
+#walletAddress,
+#balance {
+    font-weight: bold;
+    color: #333;
+}
+/* Style for the buttons */
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
     </style>
 </head>
 
@@ -122,34 +139,43 @@ if(strlen($_SESSION['alogin']) == 0) {
                                             </div>
                                             <div class="text-center">
                                                 <h3>Welcome, <?php echo htmlentities($userResult->name); ?><span style="color: red;"> (<?php echo htmlentities($userResult->designation); ?>)</span></h3>
+                <!-- Display user's wallet address and balance -->
+                    <h1>Ethereum Wallet Interaction</h1>
+    <button id="connectWallet">Connect to Wallet</button>
+    <button id="disconnectWallet" style="display: none;">Disconnect Wallet</button>
+    <div id="walletInfo" style="display: none;">
+        <p>Wallet Address: <span id="walletAddress"></span></p>
+        <p>Balance: <span id="balance"></span> ETH</p>
+    </div>
                                                 <p>Your Total XP: <?php echo htmlentities($xpTotalResult->total_xp_reward); ?></p>
-                                                <?php if ($userResult->designation === 'Sponsor') : ?>
-                                                    <p>Sponsor</p>
-                                                    <div class="quest-list"> <!-- Apply the quest-list class here -->
-                                                        <h4>Your Sponsored Homeless Persons:</h4>
-                                                        <?php
-                                                        // Fetch the list of homeless persons sponsored by this user
-                                                        $sponsorshipSql = "SELECT h.name AS homeless_name
-                                                                          FROM sponsorship s
-                                                                          INNER JOIN homeless_registration h ON s.homeless_person_id = h.id
-                                                                          WHERE s.sponsor_id = :sponsor_id";
-                                                        $sponsorshipQuery = $dbh->prepare($sponsorshipSql);
-                                                        $sponsorshipQuery->bindParam(':sponsor_id', $userResult->id, PDO::PARAM_INT);
-                                                        $sponsorshipQuery->execute();
-                                                        $sponsoredHomelessPersons = $sponsorshipQuery->fetchAll(PDO::FETCH_OBJ);
+                                                    <?php if ($userResult->designation === 'Sponsor') : ?>
+                                                        <p>Sponsor</p>
+                                                        <div class="quest-list"> <!-- Apply the quest-list class here -->
+                                                            <h4>Your Sponsored Homeless Persons:</h4>
+                                                            <?php
+                                                            // Fetch the list of homeless persons sponsored by this user
+                                                            $sponsorshipSql = "SELECT h.name AS homeless_name
+                                                                              FROM sponsorship s
+                                                                              INNER JOIN homeless_registration h ON s.homeless_person_id = h.id
+                                                                              WHERE s.sponsor_id = :sponsor_id";
+                                                            $sponsorshipQuery = $dbh->prepare($sponsorshipSql);
+                                                            $sponsorshipQuery->bindParam(':sponsor_id', $userResult->id, PDO::PARAM_INT);
+                                                            $sponsorshipQuery->execute();
+                                                            $sponsoredHomelessPersons = $sponsorshipQuery->fetchAll(PDO::FETCH_OBJ);
 
-                                                        if (!empty($sponsoredHomelessPersons)) {
-                                                            echo '<ul>';
-                                                            foreach ($sponsoredHomelessPersons as $homelessPerson) {
-                                                                echo '<li>' . htmlentities($homelessPerson->homeless_name) . '</li>';
+                                                            if (!empty($sponsoredHomelessPersons)) {
+                                                                echo '<ul>';
+                                                                foreach ($sponsoredHomelessPersons as $homelessPerson) {
+                                                                    echo '<li>' . htmlentities($homelessPerson->homeless_name) . '</li>';
+                                                                }
+                                                                echo '</ul>';
+                                                            } else {
+                                                                echo '<p>You have not sponsored any homeless persons yet.</p>';
                                                             }
-                                                            echo '</ul>';
-                                                        } else {
-                                                            echo '<p>You have not sponsored any homeless persons yet.</p>';
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                <?php endif; ?>
+                                                            ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +204,97 @@ if(strlen($_SESSION['alogin']) == 0) {
         <div class="clear"></div> <!-- Clear the float to prevent layout issues -->
     </div>
 
-    <!-- Loading Scripts -->
+    <!-- Include the JavaScript code for wallet interaction (already provided) -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        let web3;
+        let connected = false;
+
+        async function connectWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                web3 = new Web3(window.ethereum);
+                try {
+                    if (!connected) {
+                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        connected = true;
+                        document.getElementById('connectWallet').style.display = 'none';
+                        document.getElementById('disconnectWallet').style.display = 'block';
+                    }
+                    const accounts = await web3.eth.getAccounts();
+                    if (accounts.length > 0) {
+                        const walletAddress = accounts[0];
+                        document.getElementById('walletAddress').textContent = walletAddress;
+                        document.getElementById('walletInfo').style.display = 'block';
+                        getBalance(walletAddress);
+                    } else {
+                        alert("No accounts found. Please unlock your wallet.");
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert("Error connecting to wallet. Please check your MetaMask.");
+                }
+            } else {
+                alert("MetaMask is not installed. Please install MetaMask.");
+            }
+        }
+
+        function disconnectWallet() {
+            connected = false;
+            document.getElementById('walletInfo').style.display = 'none';
+            document.getElementById('connectWallet').style.display = 'block';
+            document.getElementById('disconnectWallet').style.display = 'none';
+            document.getElementById('walletAddress').textContent = '';
+            document.getElementById('balance').textContent = '';
+        }
+
+        async function getBalance(walletAddress) {
+            const balance = await web3.eth.getBalance(walletAddress);
+            const balanceInEth = web3.utils.fromWei(balance, 'ether');
+            document.getElementById('balance').textContent = balanceInEth;
+        }
+
+        document.getElementById('connectWallet').addEventListener('click', connectWallet);
+        document.getElementById('disconnectWallet').addEventListener('click', disconnectWallet);
+
+        document.getElementById('send').addEventListener('click', async () => {
+            const recipient = document.getElementById('recipient').value;
+            const amount = document.getElementById('amount').value;
+
+            if (!connected) {
+                alert("Please connect your wallet first.");
+                return;
+            }
+
+            if (!web3.utils.isAddress(recipient)) {
+                alert("Invalid recipient address.");
+                return;
+            }
+
+            const weiAmount = web3.utils.toWei(amount, 'ether');
+            const walletAddress = document.getElementById('walletAddress').textContent;
+
+            const transactionObject = {
+                from: walletAddress, // Added 'from' field
+                to: recipient,
+                value: weiAmount,
+            };
+
+            // Open the wallet extension for transaction confirmation
+            await web3.eth.sendTransaction(transactionObject)
+                .on('transactionHash', (hash) => {
+                    alert("Transaction sent! Transaction hash: " + hash);
+                })
+                .on('confirmation', (confirmationNumber, receipt) => {
+                    alert("Transaction confirmed! Block number: " + receipt.blockNumber);
+                })
+                .on('error', (error) => {
+                    console.error(error);
+                    alert("Error sending transaction.");
+                });
+        });
+    </script>
+
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

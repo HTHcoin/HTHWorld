@@ -115,10 +115,11 @@ while ($result = $sponsorshipQuery->fetch(PDO::FETCH_ASSOC)) {
                                             ?>
                                                 <tr>
                                                     <td><?php echo $count; ?></td>
-                                                    <td><?php echo htmlentities($result['sponsor_name']); ?></td>
-                                                    <td><?php echo htmlentities($result['homeless_name']); ?></td>
-                                                    <td><?php echo htmlentities($result['start_date']); ?></td>
-                                                    <td><?php echo htmlentities($result['end_date']); ?></td>
+                                                    <td><?php echo isset($result['sponsor_name']) ? htmlentities($result['sponsor_name']) : ''; ?></td>
+<td><?php echo isset($result['homeless_name']) ? htmlentities($result['homeless_name']) : ''; ?></td>
+<td><?php echo isset($result['start_date']) ? htmlentities($result['start_date']) : ''; ?></td>
+<td><?php echo isset($result['end_date']) ? htmlentities($result['end_date']) : ''; ?></td>
+
                                                     <td>
                                                         <a href="javascript:void(0);" data-toggle="modal" data-target="#editSponsor<?php echo htmlentities($result['id']); ?>"><i class="fa fa-pencil"></i></a>
                                                     </td>

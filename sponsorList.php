@@ -114,10 +114,11 @@ foreach ($sponsorships as $result) {
     ?>
     <tr>
         <td><?php echo $count; ?></td>
-        <td><?php echo isset($result['sponsor_name']) ? htmlentities($result['sponsor_name']) : ''; ?></td>
-        <td><?php echo isset($result['homeless_name']) ? htmlentities($result['homeless_name']) : ''; ?></td>
-        <td><?php echo isset($result['start_date']) ? htmlentities($result['start_date']) : ''; ?></td>
-        <td><?php echo isset($result['end_date']) ? htmlentities($result['end_date']) : ''; ?></td>
+<td><?php echo isset($result['sponsor_name']) ? htmlentities($result['sponsor_name']) : ''; ?></td>
+<td><?php echo isset($result['homeless_name']) ? htmlentities($result['homeless_name']) : ''; ?></td>
+<td><?php echo isset($result['start_date']) ? htmlentities($result['start_date']) : ''; ?></td>
+<td><?php echo isset($result['end_date']) ? htmlentities($result['end_date']) : ''; ?></td>
+
     </tr>
     <?php
     $count++;
