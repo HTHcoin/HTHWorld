@@ -1,4 +1,4 @@
-# User-Management-PHP-MYSQL
+# HTH World
 
 ![𝚅𝚒𝚜𝚒𝚝𝚘𝚛𝚜](https://visitor-badge.laobi.icu/badge?page_id=ajayrandhawa.User-Management-PHP-MYSQL&title=Visitor )
 
@@ -51,18 +51,20 @@ PHP User Management System is a powerful PHP script that offers a secure user ma
 * Login to Admin
 * Url: http://www.yourdomain.com/admin/
 * Username : admin
-* Password : 963852741
+* Password : 963852741 <-- change once your application is built & running
 
 ### Database Files are included in Project. (database.sql)
 
 ### Author
 
-Ajay Randhawa
+Ajay Randhawa && MichaelHDesigns
 
  ## Donate
-If you appreciate that, please consider donating to the Developer.
+If you appreciate that, please consider donating to HTH Worldwide or the Developer.
 
+https://www.paypal.com/paypalme/hthworldwide
 [![Donate](https://cdn.pbrd.co/images/HyQFKkP.png)](https://www.paypal.me/ajayrandhawa) 
+
 
 #### Happy Open Source....
 
