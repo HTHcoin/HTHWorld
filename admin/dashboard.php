@@ -201,6 +201,75 @@ if (strlen($_SESSION['alogin']) == 0) {
 </div>
 <!-- End of Sponsors Panel -->
 
+<!-- Add a new panel for Employers -->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-body bk-info text-light">
+            <div class="stat-panel text-center">
+                <?php
+                // Execute the SQL query to count the number of employers
+                $employerSql = "SELECT COUNT(id) as total FROM employers";
+                $employerQuery = $dbh->prepare($employerSql);
+                $employerQuery->execute();
+                $employerCount = $employerQuery->fetch(PDO::FETCH_ASSOC);
+                $totalEmployers = $employerCount['total'];
+                ?>
+                <div class="stat-panel-number h1 "><?php echo htmlentities($totalEmployers); ?></div>
+                <div class="stat-panel-title text-uppercase">Employers</div>
+            </div>
+        </div>
+        <a href="employersList.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
+<!-- End of Employers Panel -->
+
+<!-- Add a new panel for Employees -->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-body bk-info text-light">
+            <div class="stat-panel text-center">
+                <?php
+                // Add your code to retrieve and display employee information
+                // For example, you can count the number of employees from your database
+                $employeeSql = "SELECT COUNT(id) as total FROM employees";
+                $employeeQuery = $dbh->prepare($employeeSql);
+                $employeeQuery->execute();
+                $employeeCount = $employeeQuery->fetch(PDO::FETCH_ASSOC);
+                $totalEmployees = $employeeCount['total'];
+                ?>
+                <div class="stat-panel-number h1 "><?php echo htmlentities($totalEmployees); ?></div>
+                <div class="stat-panel-title text-uppercase">Employees</div>
+            </div>
+        </div>
+        <a href="employees.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
+<!-- End of Employees Panel -->
+
+
+<!-- Add a new panel for Jobs -->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-body bk-info text-light">
+            <div class="stat-panel text-center">
+                <?php
+                // Execute the SQL query to count the number of jobs
+                $jobsSql = "SELECT COUNT(id) as total FROM jobs";
+                $jobsQuery = $dbh->prepare($jobsSql);
+                $jobsQuery->execute();
+                $jobsCount = $jobsQuery->fetch(PDO::FETCH_ASSOC);
+                $totalJobs = $jobsCount['total'];
+                ?>
+                <div class="stat-panel-number h1 "><?php echo htmlentities($totalJobs); ?></div>
+                <div class="stat-panel-title text-uppercase">Jobs</div>
+            </div>
+        </div>
+        <a href="jobs.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
+<!-- End of Jobs Panel -->
+
+
                                         <!-- Add a new panel for Fundraisers -->
                                         <div class="col-md-3">
                                             <div class="panel panel-default">

@@ -131,7 +131,7 @@ try {
     <h1>HTH Services</h1>
 
        <!-- Display entries for the selected service type -->
-        <h2>Display Entries</h2>
+        <h2>Resources</h2>
         <select onchange="location = this.value;">
             <option value="world.php?service_type=shelter" <?php if ($selectedServiceType === 'shelter') echo 'selected'; ?>>Shelters</option>
             <option value="world.php?service_type=food_bank" <?php if ($selectedServiceType === 'food_bank') echo 'selected'; ?>>Food Banks</option>

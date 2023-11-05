@@ -117,7 +117,7 @@
     <main>
         <div class="dropdown-container">
     <div class="options-section">
-        <h2> HTH World</h2>
+        <h2> HTH Services</h2>
         <p>At HTH We Fully Believe Everyone Desrves A Chance! Make A Change Today Or Seek Help Today!</p>
     </div>
         <div class="dropdown">
@@ -126,6 +126,7 @@
                 <a href="#" class="show-service" data-service="donate">Donate</a>
                 <a href="#" class="show-service" data-service="fundraisers">Fundraisers</a>
                 <a href="#" class="show-service" data-service="volunteer">Volunteer</a>
+                <a href="#" class="show-service" data-service="services">HTH World</a>
             </div>
         </div>
 
@@ -166,19 +167,24 @@
         <div class="service" id="food-banks">
             <h3>Food Banks</h3>
             <p>Need to locate your closest food bank? Check out HTH World!</p>
-            <a href="world.php?service_type=food_bank" class="service-link">HTH World</a>
+            <a href="world.php?service_type=food_bank" class="service-link">Learn More</a>
         </div>
 
         <div class="service" id="shelters">
             <h3>Shelters</h3>
             <p>Need Shelter? Check out HTH World!</p>
-            <a href="world.php?service_type=shelter" class="service-link">HTH World</a>
+            <a href="world.php?service_type=shelter" class="service-link">Learn More</a>
         </div>
 
         <div class="service" id="charities">
             <h3>Charities</h3>
             <p>Need to find a charity near you? Check out HTH World</p>
-            <a href="world.php?service_type=organization" class="service-link">HTH World</a>
+            <a href="world.php?service_type=organization" class="service-link">Learn More</a>
+        </div>
+        <div class="service" id="services">
+            <h3>HTH World</h3>
+            <p>Join HTH World to Get involved today through user experience!</p>
+            <a href="services.php" class="service-link">HTH World</a>
         </div>
         </div>
 </br>

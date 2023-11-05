@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
+INSERT IGNORE INTO `admin` (`id`, `username`, `email`, `password`) VALUES
 (1, 'admin', 'admin@admin.com', '9ae2be73b58b565bce3e47493a56e26a');
 
 -- Table structure for table `feedback`
@@ -236,6 +236,67 @@ CREATE TABLE IF NOT EXISTS `user_quests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- Create a table to store wallet addresses
+CREATE TABLE IF NOT EXISTS `wallet_addresses` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `wallet_address` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `employers` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `company_name` VARCHAR(100) NOT NULL,
+  `industry` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `employees` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `gender` VARCHAR(50) NOT NULL,
+  `mobile` VARCHAR(50) NOT NULL,
+  `designation` VARCHAR(50) NOT NULL,
+  `user_type` VARCHAR(50),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table to store job listings
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `employer_id` INT(11) NOT NULL,
+  `job_title` VARCHAR(100) NOT NULL,
+  `job_description` TEXT NOT NULL,
+  `requirements` TEXT NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  `salary` DECIMAL(10, 2) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`employer_id`) REFERENCES `employers`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Create the 'job_applications' table if it doesn't exist
+CREATE TABLE IF NOT EXISTS job_applications (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    job_id INT(11) NOT NULL,
+    user_id INT(11) NOT NULL,
+    cover_letter TEXT NOT NULL,
+    skills TEXT NOT NULL,
+    resume TEXT NOT NULL,
+    application_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    application_status ENUM('Pending', 'Accepted', 'Denied') NOT NULL DEFAULT 'Pending',
+    PRIMARY KEY (id),
+    FOREIGN KEY (job_id) REFERENCES jobs(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- AUTO_INCREMENT definitions
 ALTER TABLE `admin`
@@ -267,8 +328,16 @@ ALTER TABLE `quests`
 ALTER TABLE `user_quests`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE employees MODIFY designation VARCHAR(50) DEFAULT '';
 
+
+-- Insert data into the 'employers' table
+INSERT IGNORE INTO `employers` (`user_id`, `company_name`, `industry`) VALUES (1, 'Company Name', 'Industry');
+
+-- Commit the changes
 COMMIT;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
