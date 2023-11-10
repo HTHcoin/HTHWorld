@@ -29,24 +29,42 @@ if (strlen($_SESSION['alogin']) == 0) {
     <link rel="stylesheet" href="css/bootstrap-select.css">
     <!-- Admin Style -->
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .errorWrap {
-            padding: 10px;
-            margin: 0 0 20px 0;
-            background: #dd3d36;
-            color: #fff;
-            -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-            box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-        }
-        .succWrap{
-            padding: 10px;
-            margin: 0 0 20px 0;
-            background: #5cb85c;
-            color: #fff;
-            -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-            box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-        }
-    </style>
+</script>
+	<style>
+	.errorWrap {
+    padding: 10px;
+    margin: 0 0 20px 0;
+	background: #dd3d36;
+	color:#fff;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+.succWrap{
+    padding: 10px;
+    margin: 0 0 20px 0;
+	background: #5cb85c;
+	color:#fff;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+h4 {
+text-align: center;
+color: #debf12;
+}
+
+th {
+text-align: center;
+color: #34bcaa;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    color: #debf12;
+}
+		</style>
 </head>
 <body>
     <?php
@@ -110,11 +128,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     <div class="modal fade" id="userProfileModal" tabindex="-1" role="dialog" aria-labelledby="userProfileModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+
                 <div class="modal-body" id="userProfileContent">
                     <!-- User profile content will be displayed here -->
                 </div>

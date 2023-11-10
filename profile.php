@@ -66,8 +66,7 @@ if(strlen($_SESSION['alogin']) == 0) {
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
 	<!-- Admin Stye -->
 	<link rel="stylesheet" href="css/style.css">
-
-	<script type= "text/javascript" src="../vendor/countries.js"></script>
+</script>
 	<style>
 	.errorWrap {
     padding: 10px;
@@ -110,7 +109,7 @@ if(strlen($_SESSION['alogin']) == 0) {
 						<div class="row">
 							<div class="col-md-12">
 								<div class="panel panel-default">
-									<div class="panel-heading"><?php echo htmlentities($_SESSION['alogin']); ?></div>
+									<div class="panel-heading" style=" color: #debf12; background-color: #333; border-color: #34bcaa"><?php echo htmlentities($_SESSION['alogin']); ?></div>
 <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 

@@ -71,7 +71,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     <!-- Admin Style -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/homepage.css">
-    <script type="text/javascript" src="../vendor/countries.js"></script>
+
     <style>
         .errorWrap {
             padding: 10px;

@@ -48,6 +48,18 @@ try {
     <title>HTH World Services</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #debf12;
+        }
         .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -61,18 +73,22 @@ try {
         }
         .about-container {
             text-align: center;
-            background-color: #f5f5f5;
+            background-color: #333;
             padding: 20px;
+            box-shadow: 0 0 10px #34bcaa;
+            margin-right: 5%;
+            margin-left: 5%;
+            border-radius: 15px;
         }
 
         .about-container h2 {
             font-size: 24px;
-            color: #333;
+            color: #34bcaa;
         }
 
         .about-container p {
             font-size: 16px;
-            color: #777;
+            color: #fff;
         }
         select {
             padding: 10px;
@@ -101,25 +117,25 @@ try {
         border: 1px solid #ccc;
         padding: 20px;
         border-radius: 10px;
-        background-color: #f5f5f5;
-        width: calc(33.33% - 20px); /* Adjust for three cards in a row with a gap */
+        background-color: #333;
+        width: calc(33.33% - 20px);
     }
 
     .service-card h3 {
         font-size: 24px;
-        color: #333;
+        color: #debf12;
     }
 
     .service-card p {
         font-size: 16px;
-        color: #777;
+        color: #fff;
     }
     </style>
 </head>
 <body style="background-color: #333">
     <header>
         <h1>Welcome to HTH World</h1>
-        <p>Helping the Community Together</p>
+        <p style="color: #debf12">Helping the Community Together</p>
     </header>
     <?php
     // Include the navigation bar
@@ -154,6 +170,7 @@ try {
     <p>No entries found.</p>
 <?php endif; ?>
     </div>
+</br>
     <?php
     // Include the footer
     include('footer.php');

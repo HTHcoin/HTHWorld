@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nonprofit Organization</title>
+    <title>HTH World</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #debf12;
+        }
+
+        p {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        ol {
+            list-style-type: decimal;
+            text-align: left;
+        }
+
+        li {
+            font-size: 16px;
+            color: #fff;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        a {
+            color: #34bcaa;
+            text-decoration: none;
+        }
+
         .dropdown-container {
             text-align: center; /* Center the content horizontally */
         }
@@ -33,6 +68,8 @@
             display: none;
             padding: 10px;
             border: 1px solid #ccc;
+            background-color: #333;
+            color: #fff;
         }
 
         .service.active {
@@ -44,27 +81,29 @@
             padding: 10px 16px;
             text-decoration: none;
             display: block;
-            color: #333;
+            color: #34bcaa;
+            background-color: #333;
         }
 
         .dropdown-content a:hover {
-            background-color: #ddd;
+            background-color: #333;
+            color: #debf12;
         }
 
         .about-container {
             text-align: center;
-            background-color: #f5f5f5;
+            background-color: #333;
             padding: 20px;
         }
 
         .about-container h2 {
             font-size: 24px;
-            color: #333;
+            color: #debf12;
         }
 
         .about-container p {
             font-size: 16px;
-            color: #777;
+            color: #fff;
         }
 
         .donate-container {
@@ -72,40 +111,44 @@
         }
         .donate-container {
             text-align: center;
-            background-color: #f5f5f5;
+            background-color: #333;
             padding: 20px;
         }
 
         .donate-container h2 {
             font-size: 24px;
-            color: #333;
+            color: #debf12;
         }
 
         .donate-container p {
             font-size: 16px;
-            color: #777;
+            color: #fff;
         }
 
     .donate-button {
         display: inline-block;
-        background-color: #3498db;
+        background-color: #34bcaa;
         color: #fff;
         padding: 10px 20px;
         text-decoration: none;
-        border-radius: 5px;
+        border-radius: 25px;
         font-weight: bold;
         margin: 10px;
+        box-shadow: 0 0 10px #debf12;
     }
 
     .donate-button:hover {
-        background-color: #2773a4;
+        background-color: #debf12;
+        box-shadow: 0 0 10px #34bcaa;
     }
+
+
     </style>
 </head>
 <body style="background-color: #333">
     <header>
         <h1>Welcome to HTH World</h1>
-        <p>Helping the Community Together</p>
+        <p style="color: #debf12">Helping the Community Together</p>
     </header>
 
     <?php
@@ -200,10 +243,10 @@
         <div class="donate-container">
       <div class="donate-container">
 <!-- Stripe Donate Now Button -->
-<a href="https://buy.stripe.com/eVa00f4LjbLrfBu5kk" class="donate-button" target="_blank">Donate Now with Stripe</a>
+<a href="https://buy.stripe.com/eVa00f4LjbLrfBu5kk" class="donate-button" target="_blank">Stripe</a>
 
 <!-- PayPal Donate Now Button -->
-<a href="https://www.paypal.com/paypalme/hthworldwide" class="donate-button" target="_blank">Donate Now with PayPal</a>
+<a href="https://www.paypal.com/paypalme/hthworldwide" class="donate-button" target="_blank">PayPal</a>
         </div>
 </div>
     </main>

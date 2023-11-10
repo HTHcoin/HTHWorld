@@ -44,6 +44,23 @@ if (isset($_POST['login'])) {
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
 	<link rel="stylesheet" href="css/style.css">
 
+<style>
+
+p {
+color: #000;
+}
+
+form label {
+color: #000;
+}
+
+footer p {
+color: #fff;
+}
+
+
+</style>
+
 </head>
 
 
@@ -51,7 +68,7 @@ if (isset($_POST['login'])) {
 
         <header>
         <h1>Welcome to Our Nonprofit</h1>
-        <p>Helping the Community Together</p>
+        <p style=" color: #debf12">Helping the Community Together</p>
     </header>
 
     <?php
@@ -64,7 +81,7 @@ if (isset($_POST['login'])) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <h1 class="text-center text-bold mt-4x">Login</h1>
+                        <h1 class="text-center text-bold mt-4x" style=" color: #debf12">Login</h1>
                         <div class="well row pt-2x pb-3x bk-light">
                             <div class="col-md-8 col-md-offset-2">
                                 <form method="post">
@@ -85,6 +102,12 @@ if (isset($_POST['login'])) {
                 </div>
             </div>
         </div>
+
+    <?php
+    // Include the navigation bar
+    include('footer.php');
+    ?>
+
     </div>
 	
 	<!-- Loading Scripts -->
@@ -97,6 +120,8 @@ if (isset($_POST['login'])) {
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
+
+
 
 </body>
 

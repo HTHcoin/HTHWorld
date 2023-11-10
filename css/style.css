@@ -30,13 +30,19 @@ html {
   p {
     font-size: 1em;
     margin-bottom: 1.8em;
+    font-size: 18px;
+            color: #fff;
   }
 }
 /****************************
 *      BODY DEFAULTS        *
 ****************************/
 body {
-  font-size: 1em;
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
 }
 a {
   color: #37a6c4;
@@ -50,6 +56,20 @@ a:hover {
 ****************************/
 .btn {
   font-family: 'Oswald', sans-serif;
+	display: inline-block;
+        background-color: #34bcaa;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        margin: 10px;
+        box-shadow: 0 0 10px #debf12;
+}
+.btn:hover {
+  font-family: 'Oswald', sans-serif;
+  background-color: #debf12;
+  box-shadow: 0 0 10px #34bcaa;
 }
 .btn i {
   position: relative;
@@ -94,7 +114,7 @@ a:hover {
 *      Background Colors        *
 ****************************/
 .bk-primary {
-  background: #325d88;
+  background: #debf12;
 }
 .bk-success {
   background: #93c54b;
@@ -155,12 +175,14 @@ a:hover {
 }
 .panel {
   overflow: hidden;
+  box-shadow: 0 0 10px #34bcaa;
+  border:1px solid #34bcaa;
 }
 /****************************
 *      Border        *
 ****************************/
 .brdr {
-  border: 1px solid #f0f0f0;
+  border: 1px solid #34bcaa;
 }
 /****************************
 *      Text size color        *
@@ -542,7 +564,7 @@ li {
 .page-title {
   padding-bottom: 15px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #debf12;
 }
 .brand {
   background: #3e454c;
@@ -637,10 +659,10 @@ li {
   background-color: transparent;
 }
 .ts-sidebar::-webkit-scrollbar-thumb {
-  background-color: #b4b4b4;
+  background-color: #debf12;
 }
 .ts-sidebar {
-  background: #2c3136;
+  background: #333;
   max-height: 0;
   transition: max-height 0.3s;
   overflow: hidden;
@@ -673,7 +695,7 @@ li {
   }
 }
 .ts-sidebar-menu .ts-label {
-  color: #585c64;
+  color: #debf12;
   font-weight: bold;
   padding: 8px 15px;
   text-transform: uppercase;
@@ -751,7 +773,7 @@ li {
 /* Style the header section */
 header {
     background-color: #333;
-    color: #fff;
+    color: #34bcaa;
     text-align: center;
     padding: 2rem 0;
 }
@@ -759,7 +781,9 @@ header {
 header h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: #34bcaa;
 }
+
 
 header p {
     font-size: 1.2rem;
@@ -787,9 +811,9 @@ main {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    background-color: #333;
+    box-shadow: 0 0 10px #34bcaa;
+    border-radius: 15px;
 }
 
 section {
@@ -797,7 +821,17 @@ section {
 }
 
 h2 {
-    color: #333;
+    color: #debf12;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #fff;
+}
+
+h3 {
+    color: #34bcaa;
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
@@ -809,7 +843,7 @@ h2 {
 
 /* Style individual services */
 .service {
-    background-color: #f5f5f5;
+    background-color: #333;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -818,12 +852,12 @@ h2 {
 
 .service h3 {
     font-size: 1.2rem;
-    color: #333;
+    color: #debf12;
 }
 
 .service p {
     font-size: 1rem;
-    color: #666;
+    color: #fff;
 }
 
 /* Style the donation options */
@@ -865,24 +899,25 @@ h2 {
 }
 
 .donate-button.stripe {
-    background-color: #00aaff;
+    background-color: #34bcaa
 }
 
 .donate-button.paypal {
-    background-color: #009cde;
+    background-color: #34bcaa;
 }
 
 .donate-button:hover {
-    background-color: #007aa8;
+    background-color: #debf12;
+        box-shadow: 0 0 10px #34bcaa;
 }
 
 .service-link {
-    color: #debf12; /* Set the default link color */
+    color: #34bcaa; /* Set the default link color */
     text-decoration: none; /* Remove underlines from links */
 }
 
 .service-link:hover {
-    color: #34bcaa; /* Set the link color when hovered */
+    color: #debf12; /* Set the link color when hovered */
 }
 
 /* Style the contact form */
@@ -890,6 +925,7 @@ form label {
     display: block;
     font-weight: bold;
     margin: 10px 0;
+    color: #fff;
 }
 
 form input[type="text"],
@@ -903,11 +939,21 @@ form textarea {
 }
 
 form button {
-    background-color: #333;
+    display: inline-block;
+    background-color: #34bcaa;
     color: #fff;
-    border: none;
     padding: 10px 20px;
-    cursor: pointer;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    margin: 10px;
+    box-shadow: 0 0 10px #debf12;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Add transition for a smooth effect */
+}
+
+form button:hover {
+    background-color: #debf12;
+    box-shadow: 0 0 10px #34bcaa;
 }
 
 /* Style the footer */
@@ -925,15 +971,18 @@ footer {
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Create a 3-column grid */
-    gap: 20px; /* Adjust the gap between items */
+    gap: 10px;
+    margin-right: 3%;
+    margin-left: 3%;
 }
 
 .fundraiser-list li {
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+    box-shadow: 0 0 5px #34bcaa;
+    border-radius: 15%;
     padding: 15px;
     text-align: center;
-    background-color: #fff;
+    background-color: #333;
     transition: transform 0.2s;
     max-width: 300px; /* Adjust the maximum width of items */
     margin: 0; /* Remove margin to prevent extra spacing */
@@ -946,24 +995,28 @@ footer {
 .fundraiser-list h3 {
     font-size: 1.5rem;
     margin: 10px 0;
+    color: #debf12;
 }
 
 .fundraiser-list p {
     font-size: 1rem;
     margin: 8px 0;
+    color: #fff;
 }
 
 .fundraiser-list a {
-    display: inline-block;
-    padding: 8px 16px;
-    margin-top: 10px;
-    background-color: #007BFF;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.2s;
+        display: inline-block;
+        background-color: #34bcaa;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        margin: 10px;
+        box-shadow: 0 0 10px #debf12;
 }
 
 .fundraiser-list a:hover {
-    background-color: #0056b3;
+    background-color: #debf12;
+        box-shadow: 0 0 10px #34bcaa;
 }

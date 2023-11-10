@@ -35,6 +35,14 @@ if (strlen($_SESSION['alogin']) == 0) {
         <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
         <!-- Admin Style -->
         <link rel="stylesheet" href="css/style.css">
+
+<style>
+h2 {
+text-align: center;
+}
+
+</style>
+
     </head>
 
     <body>
@@ -47,11 +55,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="page-title">Dashboard</h2>
-
+                            <h2 class="page-title">Users Panel</h2>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
+
+<!-- Add a new panel for Users -->
                                         <div class="col-md-3">
                                             <div class="panel panel-default">
                                                 <div class="panel-body bk-primary text-light">
@@ -70,47 +77,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <a href="userlist.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="panel panel-default">
-                                                <div class="panel-body bk-success text-light">
-                                                    <div class="stat-panel text-center">
-                                                        <?php
-                                                        $reciver = 'Admin';
-                                                        $sql1 = "SELECT id from feedback where reciver = (:reciver)";
-                                                        $query1 = $dbh->prepare($sql1);
-                                                        $query1->bindParam(':reciver', $reciver, PDO::PARAM_STR);
-                                                        $query1->execute();
-                                                        $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
-                                                        $regbd = $query1->rowCount();
-                                                        ?>
-                                                        <div class="stat-panel-number h1 "><?php echo htmlentities($regbd); ?></div>
-                                                        <div class="stat-panel-title text-uppercase">Feedback</div>
-                                                    </div>
-                                                </div>
-                                                <a href="feedback.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="panel panel-default">
-                                                <div class="panel-body bk-danger text-light">
-                                                    <div class="stat-panel text-center">
-                                                        <?php
-                                                        $reciver = 'Admin';
-                                                        $sql12 = "SELECT id from notification where notireciver = (:reciver)";
-                                                        $query12 = $dbh->prepare($sql12);
-                                                        $query12->bindParam(':reciver', $reciver, PDO::PARAM_STR);
-                                                        $query12->execute();
-                                                        $results12 = $query12->fetchAll(PDO::FETCH_OBJ);
-                                                        $regbd2 = $query12->rowCount();
-                                                        ?>
-                                                        <div class="stat-panel-number h1 "><?php echo htmlentities($regbd2); ?></div>
-                                                        <div class="stat-panel-title text-uppercase">Notifications</div>
-                                                    </div>
-                                                </div>
-                                                <a href="notification.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
-                                            </div>
-                                        </div>
+<!-- End of Users Panel -->
 
 <!-- Add a new panel for Quests -->
 <div class="col-md-3">
@@ -134,8 +101,55 @@ if (strlen($_SESSION['alogin']) == 0) {
 </div>
 <!-- End of Quests Panel -->
 
+<!-- Add a new panel for Feedback -->
+                                        <div class="col-md-3">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body bk-success text-light">
+                                                    <div class="stat-panel text-center">
+                                                        <?php
+                                                        $reciver = 'Admin';
+                                                        $sql1 = "SELECT id from feedback where reciver = (:reciver)";
+                                                        $query1 = $dbh->prepare($sql1);
+                                                        $query1->bindParam(':reciver', $reciver, PDO::PARAM_STR);
+                                                        $query1->execute();
+                                                        $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
+                                                        $regbd = $query1->rowCount();
+                                                        ?>
+                                                        <div class="stat-panel-number h1 "><?php echo htmlentities($regbd); ?></div>
+                                                        <div class="stat-panel-title text-uppercase">Feedback</div>
+                                                    </div>
+                                                </div>
+                                                <a href="feedback.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+<!-- End of Feedback Panel -->
 
+<!-- Add a new panel for Notifications -->
+                                        <div class="col-md-3">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body bk-danger text-light">
+                                                    <div class="stat-panel text-center">
+                                                        <?php
+                                                        $reciver = 'Admin';
+                                                        $sql12 = "SELECT id from notification where notireciver = (:reciver)";
+                                                        $query12 = $dbh->prepare($sql12);
+                                                        $query12->bindParam(':reciver', $reciver, PDO::PARAM_STR);
+                                                        $query12->execute();
+                                                        $results12 = $query12->fetchAll(PDO::FETCH_OBJ);
+                                                        $regbd2 = $query12->rowCount();
+                                                        ?>
+                                                        <div class="stat-panel-number h1 "><?php echo htmlentities($regbd2); ?></div>
+                                                        <div class="stat-panel-title text-uppercase">Notifications</div>
+                                                    </div>
+                                                </div>
+                                                <a href="notification.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+<!-- End of Notifications Panel -->
+                                </div>
+                            </div>
 
+                           <h2 class="page-title">Nonprofit Panel</h2>
 <!-- Add a new panel for Volunteers -->
 <div class="col-md-3">
     <div class="panel panel-default">
@@ -200,6 +214,118 @@ if (strlen($_SESSION['alogin']) == 0) {
     </div>
 </div>
 <!-- End of Sponsors Panel -->
+
+<!-- Add a new panel for Donations -->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-body bk-info text-light">
+            <div class="stat-panel text-center">
+                <?php
+                // Add your code to retrieve and display transaction information
+                // For example, you can count the number of transactions from your database
+                $transactionSql = "SELECT COUNT(id) as total FROM transactions"; // Modify the table name to your transactions table
+                $transactionQuery = $dbh->prepare($transactionSql);
+                $transactionQuery->execute();
+                $transactionCount = $transactionQuery->fetch(PDO::FETCH_ASSOC);
+                $totalTransactions = $transactionCount['total'];
+                ?>
+                <div class="stat-panel-number h1 "><?php echo htmlentities($totalTransactions); ?></div>
+                <div class="stat-panel-title text-uppercase">Donations</div>
+            </div>
+        </div>
+        <a href="transactions.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
+<!-- End of Donations Panel -->
+
+                                        <!-- Add a new panel for Fundraisers -->
+                                        <div class="col-md-3">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body bk-warning text-light">
+                                                    <div class="stat-panel text-center">
+                                                        <?php
+                                                        $fundraiserSql = "SELECT COUNT(id) as total FROM fundraisers";
+                                                        $fundraiserQuery = $dbh->prepare($fundraiserSql);
+                                                        $fundraiserQuery->execute();
+                                                        $fundraiserCount = $fundraiserQuery->fetch(PDO::FETCH_ASSOC);
+                                                        $totalFundraisers = $fundraiserCount['total'];
+                                                        ?>
+                                                        <div class="stat-panel-number h1 "><?php echo htmlentities($totalFundraisers); ?></div>
+                                                        <div class="stat-panel-title text-uppercase">Fundraisers</div>
+                                                    </div>
+                                                </div>
+                                                <a href="fundraisers.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                        <!-- End of Fundraisers Panel -->
+
+
+<!-- Add a new panel for Organizations -->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-body bk-success text-light">
+            <div class="stat-panel text-center">
+                <?php
+                // Execute the SQL query to count the number of organizations
+                $organizationsSql = "SELECT COUNT(id) as total FROM outside_organizations";
+                $organizationsQuery = $dbh->prepare($organizationsSql);
+                $organizationsQuery->execute();
+                $organizationsCount = $organizationsQuery->fetch(PDO::FETCH_ASSOC);
+                $totalOrganizations = $organizationsCount['total'];
+                ?>
+                <div class="stat-panel-number h1 "><?php echo htmlentities($totalOrganizations); ?></div>
+                <div class="stat-panel-title text-uppercase">Organizations</div>
+            </div>
+        </div>
+        <a href="world_services.php?type=organization" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
+<!-- End of Organizations Panel -->
+
+<!-- Add a new panel for Shelters -->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-body bk-warning text-light">
+            <div class="stat-panel text-center">
+                <?php
+                // Execute the SQL query to count the number of shelters
+                $sheltersSql = "SELECT COUNT(id) as total FROM shelters";
+                $sheltersQuery = $dbh->prepare($sheltersSql);
+                $sheltersQuery->execute();
+                $sheltersCount = $sheltersQuery->fetch(PDO::FETCH_ASSOC);
+                $totalShelters = $sheltersCount['total'];
+                ?>
+                <div class="stat-panel-number h1 "><?php echo htmlentities($totalShelters); ?></div>
+                <div class="stat-panel-title text-uppercase">Shelters</div>
+            </div>
+        </div>
+        <a href="world_services.php?type=shelter" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
+<!-- End of Shelters Panel -->
+
+<!-- Add a new panel for Food Banks -->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-body bk-info text-light">
+            <div class "stat-panel text-center">
+                <?php
+                // Execute the SQL query to count the number of food banks
+                $foodBanksSql = "SELECT COUNT(id) as total FROM food_banks";
+                $foodBanksQuery = $dbh->prepare($foodBanksSql);
+                $foodBanksQuery->execute();
+                $foodBanksCount = $foodBanksQuery->fetch(PDO::FETCH_ASSOC);
+                $totalFoodBanks = $foodBanksCount['total'];
+                ?>
+                <div class="stat-panel-number h1 "><?php echo htmlentities($totalFoodBanks); ?></div>
+                <div class="stat-panel-title text-uppercase">Food Banks</div>
+            </div>
+        </div>
+        <a href="world_services.php?type=food_bank" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
+<!-- End of Food Banks Panel -->
+                           <h2 class="page-title">Jobs Panel</h2>
 
 <!-- Add a new panel for Employers -->
 <div class="col-md-3">
@@ -268,117 +394,6 @@ if (strlen($_SESSION['alogin']) == 0) {
     </div>
 </div>
 <!-- End of Jobs Panel -->
-
-
-                                        <!-- Add a new panel for Fundraisers -->
-                                        <div class="col-md-3">
-                                            <div class="panel panel-default">
-                                                <div class="panel-body bk-warning text-light">
-                                                    <div class="stat-panel text-center">
-                                                        <?php
-                                                        $fundraiserSql = "SELECT COUNT(id) as total FROM fundraisers";
-                                                        $fundraiserQuery = $dbh->prepare($fundraiserSql);
-                                                        $fundraiserQuery->execute();
-                                                        $fundraiserCount = $fundraiserQuery->fetch(PDO::FETCH_ASSOC);
-                                                        $totalFundraisers = $fundraiserCount['total'];
-                                                        ?>
-                                                        <div class="stat-panel-number h1 "><?php echo htmlentities($totalFundraisers); ?></div>
-                                                        <div class="stat-panel-title text-uppercase">Fundraisers</div>
-                                                    </div>
-                                                </div>
-                                                <a href="fundraisers.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <!-- End of Fundraisers Panel -->
-
-<!-- Add a new panel for Donations -->
-<div class="col-md-3">
-    <div class="panel panel-default">
-        <div class="panel-body bk-info text-light">
-            <div class="stat-panel text-center">
-                <?php
-                // Add your code to retrieve and display donation information
-                // For example, you can count the number of donations from your database
-                $donationSql = "SELECT COUNT(id) as total FROM donations";
-                $donationQuery = $dbh->prepare($donationSql);
-                $donationQuery->execute();
-                $donationCount = $donationQuery->fetch(PDO::FETCH_ASSOC);
-                $totalDonations = $donationCount['total'];
-                ?>
-                <div class="stat-panel-number h1 "><?php echo htmlentities($totalDonations); ?></div>
-                <div class="stat-panel-title text-uppercase">Donations</div>
-            </div>
-        </div>
-        <a href="donations.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
-    </div>
-</div>
-<!-- End of Donations Panel -->
-
-<!-- Add a new panel for Organizations -->
-<div class="col-md-3">
-    <div class="panel panel-default">
-        <div class="panel-body bk-success text-light">
-            <div class="stat-panel text-center">
-                <?php
-                // Execute the SQL query to count the number of organizations
-                $organizationsSql = "SELECT COUNT(id) as total FROM outside_organizations";
-                $organizationsQuery = $dbh->prepare($organizationsSql);
-                $organizationsQuery->execute();
-                $organizationsCount = $organizationsQuery->fetch(PDO::FETCH_ASSOC);
-                $totalOrganizations = $organizationsCount['total'];
-                ?>
-                <div class="stat-panel-number h1 "><?php echo htmlentities($totalOrganizations); ?></div>
-                <div class="stat-panel-title text-uppercase">Organizations</div>
-            </div>
-        </div>
-        <a href="world_services.php?type=organization" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
-    </div>
-</div>
-<!-- End of Organizations Panel -->
-
-<!-- Add a new panel for Shelters -->
-<div class="col-md-3">
-    <div class="panel panel-default">
-        <div class="panel-body bk-warning text-light">
-            <div class="stat-panel text-center">
-                <?php
-                // Execute the SQL query to count the number of shelters
-                $sheltersSql = "SELECT COUNT(id) as total FROM shelters";
-                $sheltersQuery = $dbh->prepare($sheltersSql);
-                $sheltersQuery->execute();
-                $sheltersCount = $sheltersQuery->fetch(PDO::FETCH_ASSOC);
-                $totalShelters = $sheltersCount['total'];
-                ?>
-                <div class="stat-panel-number h1 "><?php echo htmlentities($totalShelters); ?></div>
-                <div class="stat-panel-title text-uppercase">Shelters</div>
-            </div>
-        </div>
-        <a href="world_services.php?type=shelter" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
-    </div>
-</div>
-<!-- End of Shelters Panel -->
-
-<!-- Add a new panel for Food Banks -->
-<div class="col-md-3">
-    <div class="panel panel-default">
-        <div class="panel-body bk-info text-light">
-            <div class "stat-panel text-center">
-                <?php
-                // Execute the SQL query to count the number of food banks
-                $foodBanksSql = "SELECT COUNT(id) as total FROM food_banks";
-                $foodBanksQuery = $dbh->prepare($foodBanksSql);
-                $foodBanksQuery->execute();
-                $foodBanksCount = $foodBanksQuery->fetch(PDO::FETCH_ASSOC);
-                $totalFoodBanks = $foodBanksCount['total'];
-                ?>
-                <div class="stat-panel-number h1 "><?php echo htmlentities($totalFoodBanks); ?></div>
-                <div class="stat-panel-title text-uppercase">Food Banks</div>
-            </div>
-        </div>
-        <a href="world_services.php?type=food_bank" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
-    </div>
-</div>
-<!-- End of Food Banks Panel -->
 
                                     </div>
                                 </div>

@@ -38,7 +38,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     <!-- Admin Style -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/homepage.css">
-    <script type="text/javascript" src="../vendor/countries.js"></script>
+
     <style>
         .errorWrap {
             padding: 10px;
@@ -61,18 +61,20 @@ if (strlen($_SESSION['alogin']) == 0) {
         /* Style for the page title */
         h1, h2 {
             text-align: center;
-            color: #333;
+            color: #debf12;
         }
 
         /* Style for the buttons */
         button {
-            display: block;
-            margin: 10px auto;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
+	display: inline-block;
+        background-color: #34bcaa;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        margin: 0 auto;
+        box-shadow: 0 0 10px #debf12;
         }
 
         /* Style for the form and labels */
@@ -84,7 +86,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         label {
             display: block;
             margin-top: 10px;
-            color: #333;
+            color: #fff;
         }
 
         input[type="text"],
@@ -98,8 +100,15 @@ if (strlen($_SESSION['alogin']) == 0) {
         }
 
         /* Style for the submit button */
-        button[type="button"] {
-            background-color: #008CBA;
+        button[type="button"]                                                                                                              	display: inline-block;
+        background-color: #34bcaa;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        margin: 10px;
+        box-shadow: 0 0 10px #debf12;
         }
 
         /* Style for the wallet information */
@@ -108,13 +117,14 @@ if (strlen($_SESSION['alogin']) == 0) {
             margin: 20px auto;
             padding: 10px;
             max-width: 300px;
+            color: #fff;
         }
 
         /* Style for the balance and wallet address */
         #walletAddress,
         #balance {
             font-weight: bold;
-            color: #333;
+            color: #fff;
         }
 
         /* Style for error messages */
@@ -135,8 +145,11 @@ if (strlen($_SESSION['alogin']) == 0) {
         <?php include('includes/leftbar.php'); ?>
         <div class="content-wrapper">
             <h1>HTHW Wallet</h1>
+</br>
+</br>
             <button id="connectWallet">Connect to Wallet</button>
             <button id="disconnectWallet" style="display: none;">Disconnect Wallet</button>
+</br>
             <div id="walletInfo" style="display: none;">
                 <p>Wallet Address: <span id="walletAddress"></span></p>
                 <p>Balance: <br><span id="balance"></span> HTHW</p>
@@ -151,6 +164,23 @@ if (strlen($_SESSION['alogin']) == 0) {
             </form>
         </div>
     </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/fileinput.js"></script>
+    <script src="js/chartData.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('.succWrap').slideUp("slow");
+            }, 3000);
+        });
+    </script>
 
     <!-- Include the JavaScript code for wallet interaction -->
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>

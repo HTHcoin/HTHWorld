@@ -1,14 +1,14 @@
 <?php
 session_start();
 include('includes/config.php');
-  require_once('../lib/pdo_db.php');
-  require_once('../models/Transaction.php');
+  require_once('lib/pdo_db.php');
+  require_once('models/Customer.php');
 
-  // Instantiate Transaction
-  $transaction = new Transaction();
+  // Instantiate Customer
+  $customer = new Customer();
 
-  // Get Transaction
-  $transactions = $transaction->getTransactions();
+  // Get Customer
+  $customers = $customer->getCustomers();
 ?>
 
 <!DOCTYPE html>
@@ -89,8 +89,7 @@ color: #34bcaa;
 
     </style>
 
-
-  <title>View Transactions</title>
+  <title>View Customers</title>
 </head>
 <body>
 </br>
@@ -104,42 +103,46 @@ color: #34bcaa;
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="page-title" style="color: #debf12">HTH Donors List</h3>
-
+    <div class="btn-group" role="group">
+      <a href="transactions.php" class="btn btn-secondary">Transactions</a>
+    </div>
+    <hr>
+    <h2>Donors</h2>
 </br>
     <table class="table">
       <thead>
         <tr>
-          <th>Transaction ID</th>
-          <th>Customer</th>
-          <th>Product</th>
-          <th>Amount</th>
+          <th>Customer ID</th>
+          <th>Name</th>
+          <th>Email</th>
           <th>Date</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach($transactions as $t): ?>
+        <?php foreach($customers as $c): ?>
           <tr>
-            <td><?php echo $t->id; ?></td>
-            <td><?php echo $t->customer_id; ?></td>
-            <td><?php echo $t->product; ?></td>
-            <td><?php echo sprintf('%.2f', $t->amount / 100); ?> <?php echo strtoupper($t->currency); ?></td>
-            <td><?php echo $t->created_at; ?></td>
+            <td><?php echo $c->id; ?></td>
+            <td><?php echo $c->first_name; ?> <?php echo $c->last_name; ?></td>
+            <td><?php echo $c->email; ?></td>
+            <td><?php echo $c->created_at; ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
     </table>
     <br>
+    <br>
+  </div>
+
+</div>
     <div class="card-section">
         <h2> Donate Right Now!</h2>
         <p>100% of your donation goes towards helping the homeless, please donate today!</p>
     <p><a href="donate.php" style="color: #34bcaa">Donate Here!</a></p>
     </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
 
+</div>
+</div>
+</div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -156,5 +159,6 @@ color: #34bcaa;
             }, 3000);
         });
     </script>
+
 </body>
 </html>

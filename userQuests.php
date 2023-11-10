@@ -100,7 +100,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	<!-- Admin Stye -->
 	<link rel="stylesheet" href="css/style.css">
 
-	<script type= "text/javascript" src="../vendor/countries.js"></script>
+</script>
 	<style>
 	.errorWrap {
     padding: 10px;
@@ -118,6 +118,23 @@ if (strlen($_SESSION['alogin']) == 0) {
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
+
+h4 {
+text-align: center;
+color: #debf12;
+}
+
+th {
+text-align: center;
+color: #34bcaa;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    color: #debf12;
+}
 		</style>
 
 
@@ -131,7 +148,7 @@ if (strlen($_SESSION['alogin']) == 0) {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="page-title">Quests</h2>
+                        <h2 class="page-title">User Quests</h2>
                         <div class="row">
                             <div class="col-md-12">
                                 <?php if (!empty($quests)) : ?>

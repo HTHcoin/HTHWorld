@@ -76,8 +76,7 @@ if(isset($_POST['submit']))
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
 	<!-- Admin Stye -->
 	<link rel="stylesheet" href="css/style.css">
-
-	<script type= "text/javascript" src="../vendor/countries.js"></script>
+</script>
 	<style>
 	.errorWrap {
     padding: 10px;
@@ -120,7 +119,7 @@ if(isset($_POST['submit']))
 							<div class="col-md-12">
                             <h2>Give us Feedback</h2>
 								<div class="panel panel-default">
-									<div class="panel-heading">Edit Info</div>
+									<div class="panel-heading" style=" color: #debf12; background-color: #333; border-color: #34bcaa">Enter Your Feedback</div>
 <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 

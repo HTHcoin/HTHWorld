@@ -54,6 +54,86 @@ if (strlen($_SESSION['alogin']) == 0) {
 
     <!-- Bootstrap JavaScript (update the version) -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+
+th {
+text-align: center;
+color: #34bcaa;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    color: #debf12;
+    background-color: #333;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #333;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+}
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #34bcaa;
+}
+
+.modal-footer {
+    display: contents;
+    grid-template-columns: 1fr; /* Create a single column */
+    grid-template-rows: 1fr auto 1fr; /* Create three rows with equal spacing */
+    align-content: center; /* Vertically align content to the center */
+    padding: 15px;
+    border-top: 1px solid #34bcaa;
+}
+
+    .button-default {
+        display: inline-block;
+        background-color: #34bcaa;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        margin: 10px;
+        box-shadow: 0 0 10px #debf12;
+        width: 25%;
+    }
+
+    .button-default:hover {
+        background-color: #debf12;
+        box-shadow: 0 0 10px #34bcaa;
+    }
+
+    .button-primary {
+        display: inline-block;
+        background-color: #34bcaa;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        margin: 10px;
+        box-shadow: 0 0 10px #debf12;
+        text-align: center;
+        width: 25%;
+    }
+
+    .button-primary:hover {
+        background-color: #debf12;
+        box-shadow: 0 0 10px #34bcaa;
+    }
+
+</style>
 </head>
 <body>
     <?php include('includes/header.php'); ?>
@@ -107,9 +187,10 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                             <p><strong>Requirements:</strong> <?php echo htmlentities($job->requirements); ?></p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            <a href="application.php?apply=<?php echo $job->id; ?>" class="btn btn-primary">Apply</a>
+                                                            <button type="button" class="button-default" data-dismiss="modal">Close</button>
+                                                            <a href="application.php?apply=<?php echo $job->id; ?>" class="button-primary">Apply</a>
                                                         </div>
+</br>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,6 +206,21 @@ if (strlen($_SESSION['alogin']) == 0) {
             </div>
         </div>
     </div>
-    <!-- Include your JavaScript files here -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/fileinput.js"></script>
+    <script src="js/chartData.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('.succWrap').slideUp("slow");
+            }, 3000);
+        });
+    </script>
 </body>
 </html>

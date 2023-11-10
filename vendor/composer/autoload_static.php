@@ -4,12 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9ccd99bbd1ee3fbb0f5916ed6759ad49
+class ComposerStaticInit429cd71a9900788843d7514268ad00d9
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
             'Stripe\\' => 7,
+        ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
         ),
     );
 
@@ -17,6 +21,20 @@ class ComposerStaticInit9ccd99bbd1ee3fbb0f5916ed6759ad49
         'Stripe\\' => 
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PayPal' => 
+            array (
+                0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
+            ),
         ),
     );
 
@@ -27,9 +45,10 @@ class ComposerStaticInit9ccd99bbd1ee3fbb0f5916ed6759ad49
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9ccd99bbd1ee3fbb0f5916ed6759ad49::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9ccd99bbd1ee3fbb0f5916ed6759ad49::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9ccd99bbd1ee3fbb0f5916ed6759ad49::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit429cd71a9900788843d7514268ad00d9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit429cd71a9900788843d7514268ad00d9::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit429cd71a9900788843d7514268ad00d9::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit429cd71a9900788843d7514268ad00d9::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -47,7 +47,7 @@ try {
     <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
     <!-- Admin Style -->
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="../vendor/countries.js"></script>
+
     <style>
         .errorWrap {
             padding: 10px;
@@ -66,6 +66,36 @@ try {
             -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
         }
+
+h4 {
+text-align: center;
+color: #34bcaa;
+
+}
+
+th {
+text-align: center;
+color: #34bcaa;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    color: #debf12;
+}
+
+.heading {
+font-size: 18px;
+font-family: Arial, sans-serif;
+color: #34bcaa;
+background-color: #333;
+}
+
+.list-body {
+
+background-color: #333;
+}
     </style>
 </head>
 <body>
@@ -79,10 +109,13 @@ try {
                         <h2 class="page-title">Donors List</h2>
                     </div>
                 </div>
+</br>
+</br>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Donors</div>
+</br>
+                            <div class="heading">Donors</div>
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <?php if (!empty($donorMsg)) : ?>
@@ -91,7 +124,7 @@ try {
                                         </div>
                                     <?php endif; ?>
                                     <?php if (!empty($donors)) : ?>
-                                        <table class="table table-bordered table-striped">
+                                        <table class="table table-bordered">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>

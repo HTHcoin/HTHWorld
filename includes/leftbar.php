@@ -27,7 +27,7 @@
         <li><a href="employees-landing.php"><i class="fa fa-user"></i> Employees</a></li>
         <li><a href="homelessList.php"><i class="fa fa-user"></i> Homeless List</a></li>
         <li><a href="sponsorList.php"><i class="fa fa-user"></i> Sponsors List</a></li>
-        <li><a href="donorsList.php"><i class="fa fa-user"></i> Donors List</a></li>
+        <li><a href="transactions.php"><i class="fa fa-user"></i> Donors List</a></li>
         <!-- Add more menu items as needed -->
 			</ul>
 </br>

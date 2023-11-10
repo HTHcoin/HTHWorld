@@ -41,7 +41,8 @@ if (isset($_POST['signup_volunteer'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Become a Volunteer</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Adjust the path to your CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/volunteer.css"> <!-- Adjust the path to your CSS file -->
 </head>
 <body>
     <header>

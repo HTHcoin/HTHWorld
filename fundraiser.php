@@ -27,17 +27,27 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundraisers</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Adjust the path to your CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+<style>
+
+h1{
+color: #debf12;
+
+}
+
+</style>
+
+
 </head>
 <body>
     <header>
         <h1>Welcome to HTH World</h1>
-        <p>Helping the Community Together</p>
+        <p style="color: #debf12">Helping the Community Together</p>
     </header>
     <?php include('navbar.php'); ?> <!-- Include your website's navigation bar or header -->
 
     <div class="container">
-        <h1>Current Fundraisers</h1>
+        <h1 style="text-align: center">Current Fundraisers</h1>
 
         <?php if (!empty($fundraiserMsg)) : ?>
             <div class="error-message"><?php echo $fundraiserMsg; ?></div>

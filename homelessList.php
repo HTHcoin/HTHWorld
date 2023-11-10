@@ -85,8 +85,7 @@ if (isset($_POST['confirmSponsorship'])) {
     <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
     <!-- Admin Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fundraisers.css">
-    <script type="text/javascript" src="../vendor/countries.js"></script>
+
     <style>
         .errorWrap {
             padding: 10px;
@@ -105,6 +104,103 @@ if (isset($_POST['confirmSponsorship'])) {
             -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
         }
+
+h4 {
+text-align: center;
+color: #34bcaa;
+}
+
+th {
+text-align: center;
+color: #34bcaa;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    color: #debf12;
+}
+
+.card-section {
+    text-align: center;
+    margin: 0 auto;
+    background: #333;
+    color: #debf12;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    width: 80%; /* Adjust the width as needed */
+}
+
+.card-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #debf12;
+}
+
+.card-section p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.card-section form {
+    margin-top: 20px;
+}
+
+.card-section .form-group {
+    text-align: left;
+}
+
+.card-section label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #debf12;
+}
+
+.card-section input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #34bcaa;
+    border-radius: 5px;
+    background: #333;
+    color: #debf12;
+}
+
+.card-section button {
+    padding: 10px 20px;
+    font-weight: bold;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.card-section .btn-primary {
+    background-color: #34bcaa;
+    color: #fff;
+    box-shadow: 0 0 10px #debf12;
+}
+
+.card-section .btn-default {
+    background-color: #34bcaa;
+    color: #fff;
+    box-shadow: 0 0 10px #debf12;
+}
+
+.card-section .btn-primary:hover {
+    background-color: #debf12;
+    box-shadow: 0 0 10px #34bcaa;
+    color: #fff;
+}
+
+.card-section .btn-default:hover {
+    background-color: #debf12;
+    box-shadow: 0 0 10px #34bcaa;
+    color: #fff;
+}
+
     </style>
 </head>
 
@@ -116,10 +212,10 @@ if (isset($_POST['confirmSponsorship'])) {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="page-title">Manage Homeless Users</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4>Homeless Users List</h4>
+                        <h3 class="page-title" style="color: #debf12">Manage Homeless Users</h3>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4>Sponsor Today!</h4>
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -150,7 +246,7 @@ if (isset($_POST['confirmSponsorship'])) {
                                 </table>
                             </div>
 <?php if (isset($userDetails)) : ?>
-    <div class="col-md-6">
+    <div class="card-section">
         <h4>Homeless User Details</h4>
         <p><strong>Name:</strong> <?php echo $userDetails['name']; ?></p>
         <p><strong>Gender:</strong> <?php echo $userDetails['gender']; ?></p>
@@ -179,6 +275,7 @@ if (isset($_POST['confirmSponsorship'])) {
 
     <button type="submit" name="confirmSponsorship" class="btn btn-primary">Confirm Sponsorship</button>
     <button type="button" class="btn btn-default" id="closeDetails">Close</button>
+
 </form>
     </div>
 <?php endif; ?>
@@ -190,16 +287,13 @@ if (isset($_POST['confirmSponsorship'])) {
     </div>
 
 <script>
-    // JavaScript function to close the Homeless User Details section and redirect to homelessList.php
-    document.getElementById('closeDetails').addEventListener('click', function() {
-        // Hide the Homeless User Details
-        document.querySelector(".col-md-6").style.display = 'none';
-        
-        // Redirect back to homelessList.php
-        window.location.href = "homelessList.php";
-    });
-</script>
+document.getElementById("closeDetails").addEventListener("click", function() {
+  // You can close any details or perform other actions here if needed
 
+  // Redirect to the "homelessList.php" page
+  window.location.href = "homelessList.php";
+});
+</script>
 
     <!-- Loading Scripts -->
     <script src="js/jquery.min.js"></script>
@@ -232,9 +326,9 @@ if (isset($_POST['confirmSponsorship'])) {
                         <p>Form to confirm sponsorship will go here.</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="button-default" data-dismiss="modal">Close</button>
                         <!-- Add a button to confirm sponsorship -->
-                        <button type="button" class="btn btn-primary" onclick="confirmSponsorship()">Confirm Sponsorship</button>
+                        <button type="button" class="button-primary" onclick="confirmSponsorship()">Confirm Sponsorship</button>
                     </div>
                 </div>
             </div>

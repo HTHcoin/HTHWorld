@@ -1,15 +1,19 @@
     .left-section {
-        width: 30%;
+        width: 22%;
         display: flex;
         left: 5%;
-        border: 1px solid #ccc; /* Add a border to the left section */
+        border: 1px solid transparent;
+        box-shadow: 0 0 10px #34bcaa;
         padding: 10px; /* Add some padding for spacing */
     }
 
     /* Add styles for the quest list */
     .quest-list {
+        color: #fff;
         margin-left: 20px; /* Adjust this margin as needed */
-        border: 1px solid #ccc; /* Add a border to the quest list */
+        border: 1px solid transparent;
+        box-shadow: 0 0 10px #34bcaa;
+ /* Add a border to the quest list */
         padding: 10px; /* Add some padding for spacing */
     }
 

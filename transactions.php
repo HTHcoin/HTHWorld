@@ -1,8 +1,8 @@
 <?php
 session_start();
 include('includes/config.php');
-  require_once('../lib/pdo_db.php');
-  require_once('../models/Transaction.php');
+  require_once('lib/pdo_db.php');
+  require_once('models/Transaction.php');
 
   // Instantiate Transaction
   $transaction = new Transaction();

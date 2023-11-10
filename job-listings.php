@@ -34,6 +34,22 @@ if (strlen($_SESSION['alogin']) == 0) {
         <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
         <!-- Admin Style -->
         <link rel="stylesheet" href="css/style.css">
+
+<style>
+
+th {
+text-align: center;
+color: #34bcaa;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    color: #debf12;
+}
+
+</style>
     </head>
 <body>
     <!-- Include your header and sidebar here as per your template -->
@@ -45,10 +61,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                 <div class="row">
                     <div class="col-md-12">
                         <h2 class="page-title">Job Listings</h2>
+</br>
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <!-- Display a table with job listings -->
-                                <table class="table table-striped">
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th>Job Title</th>
@@ -89,6 +106,23 @@ if (strlen($_SESSION['alogin']) == 0) {
             </div>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/fileinput.js"></script>
+    <script src="js/chartData.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('.succWrap').slideUp("slow");
+            }, 3000);
+        });
+    </script>
+
 </body>
 </html>
 <?php

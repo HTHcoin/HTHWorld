@@ -1,0 +1,46 @@
+           body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }     
+
+   /* Style the container to look like a card */
+        #donate {
+            background-color: #333;
+            border: 1px solid #debf12;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style form elements */
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button.donate-button {
+        display: inline-block;
+        background-color: #34bcaa;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        margin: 10px;
+        box-shadow: 0 0 10px #debf12;
+        }
+
+        button.donate-button:hover {
+        background-color: #debf12;
+        box-shadow: 0 0 10px #34bcaa;
+        }

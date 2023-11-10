@@ -30,11 +30,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="css/style.css">
+<style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #debf12;
+        }
+
+
+</style>
+
 </head>
 <body style="background-color: #333">
     <header>
         <h1>Contact Us</h1>
-        <p>If you have any questions or would like to get involved, please fill out the form below:</p>
+        <p style="color: #debf12">If you have any questions or would like to get involved, please fill out the form below:</p>
     </header>
 
     <?php
@@ -49,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
-                <label for "email">Email:</label>
+                <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
 
                 <label for="message">Message:</label>
@@ -61,6 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </section>
     </main>
+
+</br>
 
     <?php
     // Include the footer

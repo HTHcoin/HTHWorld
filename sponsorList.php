@@ -58,7 +58,7 @@ while ($result = $sponsorshipQuery->fetch(PDO::FETCH_ASSOC)) {
     <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
     <!-- Admin Style -->
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="../vendor/countries.js"></script>
+
     <style>
         .errorWrap {
             padding: 10px;
@@ -77,6 +77,45 @@ while ($result = $sponsorshipQuery->fetch(PDO::FETCH_ASSOC)) {
             -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
         }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+h4 {
+text-align: center;
+color: #34bcaa;
+
+}
+
+th {
+text-align: center;
+color: #34bcaa;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    color: #debf12;
+}
+
+.heading {
+font-size: 18px;
+font-family: Arial, sans-serif;
+color: #34bcaa;
+background-color: #333;
+}
+
+.list-body {
+
+background-color: #333;
+}
+
     </style>
 </head>
 
@@ -91,13 +130,17 @@ while ($result = $sponsorshipQuery->fetch(PDO::FETCH_ASSOC)) {
                         <h2 class="page-title">Sponsor List</h2>
                     </div>
                 </div>
+</br>
+</br>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Sponsors</div>
-                            <div class="panel-body">
+</br>
+                            <div class="heading">Sponsor Today!</div>
+</br>
+                            <div class="list-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-striped">
+                                    <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -134,6 +177,8 @@ foreach ($sponsorships as $result) {
             </div>
         </div>
     </div>
+</br>
+</br>
         <!-- Loading Scripts -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
