@@ -99,6 +99,33 @@ LOCK TABLES `collaboration_records` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `customers`
+--
+
+DROP TABLE IF EXISTS `customers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customers` (
+  `id` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customers`
+--
+
+LOCK TABLES `customers` WRITE;
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES ('cus_Oyz7Rjj51uOckM','Michael','Howlett','devilking6105@gmail.com','2023-11-10 15:17:54');
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `deleteduser`
 --
 
@@ -633,6 +660,39 @@ INSERT INTO `sponsorship` VALUES (1,2,1,'2023-10-26','2023-10-31','test'),(2,1,2
 UNLOCK TABLES;
 
 --
+-- Table structure for table `transactions`
+--
+
+DROP TABLE IF EXISTS `transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transactions` (
+  `id` varchar(255) NOT NULL,
+  `customer_id` varchar(255) NOT NULL,
+  `product` varchar(255) NOT NULL,
+  `amount` varchar(255) NOT NULL,
+  `currency` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transactions`
+--
+
+LOCK TABLES `transactions` WRITE;
+/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+INSERT INTO `transactions` VALUES ('ch_3OA41vDb6cjgqHIL1K9OY9Gj','cus_Oy01J4kM80gMi2','HTH Donations','100','usd','succeeded','2023-11-08 00:10:21',NULL),('ch_3OB19KDb6cjgqHIL3rqZPQ6I','cus_Oyz7Rjj51uOckM','HTH Donations','100','usd','succeeded','2023-11-10 15:17:54',NULL);
+/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_badges`
 --
 
@@ -707,6 +767,7 @@ CREATE TABLE `users` (
   `designation` varchar(50) NOT NULL,
   `image` varchar(50) NOT NULL,
   `status` int(10) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -717,7 +778,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Michael Howlett','devilking6105@gmail.com','90e94da94c4d82798efb5a8507e57e02','Male','8482216383','Owner, Volunteer','devil.jpg',1),(2,'Michael Howlett','michaelhdesigns6105@gmail.com','b83259fa16bbda8bc2e444ed31d48186','Male','8482216383','Volunteer','devil.jpg',1),(3,'Devilking6105','michaelhdesigns6105@gmail.com','90e94da94c4d82798efb5a8507e57e02','Male','8482216383','Owner, Volunteer, Developer','devil.jpg',1);
+INSERT INTO `users` VALUES (1,'Michael Howlett','devilking6105@gmail.com','90e94da94c4d82798efb5a8507e57e02','Male','8482216383','Owner, Volunteer','devil.jpg',1,0),(2,'Michael Howlett','michaelhdesigns6105@gmail.com','b83259fa16bbda8bc2e444ed31d48186','Male','8482216383','Volunteer','devil.jpg',1,0),(3,'Devilking6105','michaelhdesigns6105@gmail.com','90e94da94c4d82798efb5a8507e57e02','Male','8482216383','Owner, Volunteer, Developer','devil.jpg',1,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -784,62 +845,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-05 23:39:52
-
---
--- Database: `paypage`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customers`
---
-
-DROP TABLE IF EXISTS `customers`;
-
--- Create the 'customers' table
-CREATE TABLE `customers` (
-  `id` varchar(255) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transactions`
---
-
-CREATE TABLE IF NOT EXISTS `transactions` (
-  `id` varchar(255) NOT NULL,
-  `customer_id` varchar(255) NOT NULL,
-  `product` varchar(255) NOT NULL,
-  `amount` varchar(255) NOT NULL,
-  `currency` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
---
--- Indexes for dumped tables
---
-
-ALTER TABLE `users`
-ADD COLUMN customer_id int(11) NOT NULL;
-
-
---
--- Indexes for table `customers`
---
-ALTER TABLE `customers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `transactions`
---
-ALTER TABLE transactions
-ADD FOREIGN KEY (user_id) REFERENCES users(id);
-
-
+-- Dump completed on 2023-11-11  1:17:21

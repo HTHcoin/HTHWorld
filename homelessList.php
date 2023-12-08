@@ -183,16 +183,16 @@ color: #34bcaa;
     box-shadow: 0 0 10px #debf12;
 }
 
-.card-section .btn-default {
-    background-color: #34bcaa;
-    color: #fff;
-    box-shadow: 0 0 10px #debf12;
-}
-
 .card-section .btn-primary:hover {
     background-color: #debf12;
     box-shadow: 0 0 10px #34bcaa;
     color: #fff;
+}
+
+.card-section .btn-default {
+    background-color: #34bcaa;
+    color: #fff;
+    box-shadow: 0 0 10px #debf12;
 }
 
 .card-section .btn-default:hover {

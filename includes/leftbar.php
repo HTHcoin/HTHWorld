@@ -11,8 +11,6 @@
 			</li>
 			<li><a href="homepage.php"><i class="fa fa-dashboard"></i> &nbsp;Dashboard</a>
 			</li>
-			<li><a href="wallet.php"><i class="fa fa-dollar"></i> &nbsp;Wallet</sup></a>
-			</li>
 			<li><a href="feedback.php"><i class="fa fa-envelope"></i> &nbsp;Feedback</a>
 			</li>
                      </ul>
@@ -31,6 +29,21 @@
         <!-- Add more menu items as needed -->
 			</ul>
 </br>
+
+
+              <ul class="ts-sidebar-menu">
+        <!-- "Web3" section -->
+        <li class="ts-label">Web3 Menu</li>
+</br>
+			<li><a href="crypto.php"><i class="fa fa-dollar"></i> &nbsp;Donate</a>
+			</li>
+			<li><a href="wallet.php"><i class="fa fa-dollar"></i> &nbsp;Wallet</sup></a>
+			</li>
+        <!-- Add more menu items as needed -->
+			</ul>
+</br>
+
+
               <ul class="ts-sidebar-menu">
         <!-- "Social" section -->
         <li class="ts-label">Social Menu</li>
