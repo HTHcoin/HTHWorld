@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hth Header</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        background-color: #333;
+        height: 50px;
+        border-bottom: 1px solid #1d1e22;
+      }
+      #logo img {
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 40px;
+      }
+      #logo {
+        display: flex;
+      }
+      #logo h4 {
+        margin-top: 19px;
+        margin-left: 10px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        color: #debf12;
+        font-size: 17px;
+      }
+      #navLinks {
+        display: flex;
+      }
+      #navLinks li {
+        margin-right: 100px;
+        list-style: none;
+        margin-top: 15px;
+      }
+      #navLinks li a {
+        color: #fff;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        text-decoration: none;
+      }
+      #dropDown {
+        cursor: pointer;
+        display: none;
+      }
+      #dropDown.active {
+        background-color: #333;
+        display: block;
+        padding-left: 10px;
+        padding-top: 10px;
+        margin-top: 12px;
+        margin-left: 30px;
+        padding: 5px;
+        padding-left: 10px;
+
+        width: 150px;
+
+        position: absolute;
+      }
+      #dropDown.active a {
+        margin-top: 10px;
+      }
+      #dropDown.active a:hover {
+        border: none;
+        padding: none;
+        border-radius: 0;
+      }
+      #drop {
+        cursor: pointer;
+        color: #debf12;
+      }
+
+      #navLinks li a:hover {
+        color: #34bcaa;
+        border: 1px solid #debf12;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      section {
+        background-image: url(./images/bg2.jpg);
+        width: 100%;
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: -20px;
+      }
+
+      section h4 {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        color: #debf12;
+        font-size: 30px;
+        padding-left: 20px;
+        padding-top: 4px;
+        overflow: none;
+        white-space: nowrap;
+      }
+      @media screen and (max-width: 500px) {
+        #navLinks {
+          display: none;
+        }
+        #logo img {
+          margin-left: 20px;
+        }
+        #burger {
+          cursor: pointer;
+          padding: 15px 13px;
+        }
+        .line {
+          background-color: #fff;
+          height: 2px;
+          width: 25px;
+          margin-top: 4px;
+        }
+        #navLinks.show {
+          display: grid;
+          position: absolute;
+          top: 39px;
+          left: 0px;
+          width: 99.9%;
+          padding-left: 25px;
+          background-color: #333;
+          padding-bottom: 20px;
+          transform: translateY(10px);
+          animation: slideAndFade 2s forwards;
+        }
+
+        @keyframes slideAndFade {
+          0% {
+            transform: translateY(-10px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(10px);
+            opacity: 1;
+          }
+        }
+
+        .navbar-active .line:nth-child(1) {
+          transform: translateY(4px) rotate(-45deg);
+          transition: all 0.5s ease-in-out;
+        }
+        .navbar-active .line:nth-child(2) {
+          opacity: 0;
+        }
+        .navbar-active .line:nth-child(3) {
+          transform: translateY(-8px) rotate(45deg);
+          transition: all 0.5s ease-in-out;
+        }
+        body {
+          background-color: #333;
+        }
+
+        section.active {
+          margin-top: 130px;
+        }
+        #dropDown.active a {
+          margin-left: 10px;
+        }
+        #dropDown.active a:hover {
+          border: none;
+          padding: 0;
+        }
+        #dropDown.active {
+          display: flex;
+          background-color: none;
+          margin-top: -10px;
+          margin-left: 70px;
+          padding-bottom: 10px;
+          width: 200px;
+          border-radius: 5px;
+          position: absolute;
+        }
+        #dropDown li a {
+          width: 100%;
+        }
+
+        section h4 {
+          font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+          color: #debf12;
+          font-size: 20px;
+          padding-left: 40px;
+          padding-top: 10px;
+          overflow: none;
+          white-space: nowrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <img src="./images/hth.png" alt="" />
+        <h4>HTH World</h4>
+      </div>
+      <nav>
+        <ul id="navLinks">
+          <li><a href="">Home</a></li>
+          <li>
+            <a href="">Account</a>
+            <i id="drop" class="fa fa-angle-down hidden-side"> </i>
+            <ul id="dropDown">
+              <a href="change-password.php">Change Password</a>
+              <a href="logout.php">Logout</a>
+            </ul>
+          </li>
+          <li><a href="">Patners</a></li>
+        </ul>
+        <div id="burger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div id="typingAn">
+        <h4 class="pull-left text-white" style="margin: 20px 0px 0px 20px">
+          <i class="fa fa-rocket"></i>&nbsp; HTH World Admin Panel
+        </h4>
+      </div>
+    </section>
+    <!-- <div class="brand clearfix">
+      <h4 class="pull-left text-white" style="margin: 20px 0px 0px 20px">
+        <i class="fa fa-rocket"></i>&nbsp; HTH World Admin Panel
+      </h4>
+      <span class="menu-btn"><i class="fa fa-bars"></i></span>
+      <ul class="ts-profile-nav">
+        <li class="ts-account">
+          <a href="#"> Account <i class="fa fa-angle-down hidden-side"></i></a>
+          <ul>
+            <li><a href="change-password.php">Change Password</a></li>
+            <li><a href="logout.php">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div> -->
+    <script>
+      var dropDown = document.getElementById("dropDown");
+      var drop = document.getElementById("drop");
+      drop.addEventListener("click", function () {
+        dropDown.classList.toggle("active");
+      });
+
+      var burgerIcon = document.querySelector("#burger");
+      var navLinks = document.querySelector("#navLinks");
+      var section = document.querySelector("section");
+      burgerIcon.addEventListener("click", function () {
+        navLinks.classList.toggle("show");
+        burgerIcon.classList.toggle("navbar-active");
+        section.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
