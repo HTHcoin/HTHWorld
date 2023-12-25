@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donation</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <!-- Sandstone Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Bootstrap Datatables -->
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
+    <!-- Bootstrap social button library -->
+    <link rel="stylesheet" href="css/bootstrap-social.css" />
+    <!-- Bootstrap select -->
+    <link rel="stylesheet" href="css/bootstrap-select.css" />
+    <!-- Bootstrap file input -->
+    <link rel="stylesheet" href="css/fileinput.min.css" />
+    <!-- Awesome Bootstrap checkbox -->
+    <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css" />
+    <!-- Admin Style -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        background-color: #333;
+        height: 50px;
+      }
+      header h4 {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 18px;
+        color: #debf12;
+        margin-top: 16px;
+        margin-left: 10px;
+      }
+      #logo img {
+        width: 30px;
+        margin-top: 10px;
+        height: 30px;
+      }
+      #logo {
+        display: flex;
+        padding-left: 50px;
+      }
+      #toggleButton {
+        height: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 20%;
+        background-color: darkgray;
+
+        border: none;
+        margin-top: 10px;
+        margin-left: 220px;
+        cursor: pointer;
+      }
+      #toggleButton i {
+        font-size: 18px;
+      }
+      nav {
+        display: flex;
+      }
+      #navLinks {
+        display: flex;
+      }
+      #navLinks li {
+        list-style: none;
+        margin-right: 70px;
+        margin-top: 15px;
+      }
+      #navLinks li a {
+        color: #fff;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        text-decoration: none;
+      }
+      #navLinks li a:hover {
+        border: 1px solid #debf12;
+        padding: 5px;
+        border-radius: 5px;
+        color: #34bcaa;
+      }
+      .nightMode::after {
+        content: "";
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        pointer-events: none;
+      }
+      #sun {
+        color: gold;
+      }
+      #moon {
+        color: grey;
+      }
+      section #h1 {
+        color: #debf12;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        text-align: center;
+        margin-right: 80px;
+        padding-top: 10px;
+      }
+      section {
+        background-image: url(./images/bg2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        width: 100%;
+      }
+      section #h2 {
+        color: #fff;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        margin-left: 50px;
+      }
+      #dropDown {
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+      section #p {
+        color: #fff;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        margin-left: 50px;
+        padding-top: 10px;
+      }
+      #hthW {
+        background-color: #333;
+        width: 40%;
+        height: 30vh;
+        margin: 20px auto;
+        padding-top: 20px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px 1px #34bcaa;
+      }
+      #donations {
+        background-color: #333;
+        width: 50%;
+        height: 30vh;
+        margin: 50px auto;
+        padding-top: 20px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px #34bcaa;
+      }
+      #donations h2 {
+        color: #debf12;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        margin-left: 30px;
+      }
+      table {
+        color: #fff;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      #hthW h2 {
+        margin-left: 30px;
+      }
+      #address {
+        display: none;
+      }
+      #address.show {
+        display: block;
+        transform: translateY(7px);
+        animation: slideAndFold 3s forwards;
+      }
+      @keyframes slideAndFold {
+        0% {
+          transform: translateY(-7px);
+        }
+      }
+      form input {
+        width: 250px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 2px;
+        border: none;
+      }
+      input::placeholder {
+        padding-left: 10px;
+      }
+      form {
+        padding-left: 110px;
+        padding-top: 30px;
+      }
+      form button {
+        padding: 5px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        background-color: #34bcaa;
+        cursor: pointer;
+      }
+      @media screen and (max-width: 500px) {
+        #navLinks {
+          display: none;
+        }
+        header h4 {
+          font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+          font-size: 16px;
+          color: #debf12;
+          margin-top: 23px;
+          width: 150px;
+
+          margin-left: 10px;
+        }
+        #logo img {
+          width: 30px;
+          margin-top: 15px;
+          height: 28px;
+        }
+        #logo {
+          display: flex;
+          padding-left: 30px;
+        }
+        #toggleButton {
+          height: 20px;
+          padding-left: 5px;
+          padding-right: 5px;
+          border-radius: 20%;
+
+          border: none;
+          margin-top: 20px;
+          margin-left: -100px;
+          cursor: pointer;
+        }
+        #toggleButton i {
+          font-size: 15px;
+        }
+        nav {
+          display: flex;
+        }
+        #burger {
+          padding: 20px 13px;
+          cursor: pointer;
+        }
+        .line {
+          background-color: #fff;
+          height: 2px;
+          width: 24px;
+          margin-top: 4px;
+        }
+        #navLinks li {
+          margin-top: 10px;
+        }
+        #navLinks.active {
+          display: grid;
+          position: absolute;
+          top: 50px;
+          left: 0px;
+          padding-left: 30px;
+          background-color: #333;
+          transform: translateY(0px);
+          animation: slideAndFade 2s ease forwards;
+          padding-bottom: 10px;
+          width: 99.7%;
+        }
+        @keyframes slideAndFade {
+          0% {
+            transform: translateY(-10px);
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        .active-navbar .line:nth-child(1) {
+          transform: translateY(3.5px) rotate(-45deg);
+          transition: all 0.5s ease-in-out;
+        }
+        .active-navbar .line:nth-child(2) {
+          opacity: 0;
+        }
+        .active-navbar .line:nth-child(3) {
+          transform: translateY(-8px) rotate(45deg);
+          transition: all 0.5s ease-in-out;
+        }
+        body {
+          background-color: #333;
+        }
+        section.shift {
+          margin-top: 130px;
+        }
+        section #h1 {
+          color: #debf12;
+          font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+          text-align: center;
+          font-size: 20px;
+          margin-left: 70px;
+          padding-top: 10px;
+        }
+        section #h2 {
+          color: #fff;
+          font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+          margin-left: 30px;
+          font-size: 17px;
+          margin-top: 20px;
+        }
+        #dropDown {
+          margin-top: 25px;
+        }
+        section #p {
+          color: #fff;
+          font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+          margin-left: 30px;
+          font-size: 15px;
+          padding-top: 10px;
+        }
+        #hthW {
+          background-color: #333;
+          width: 85%;
+          height: 30vh;
+          margin: 20px auto;
+          padding-top: 20px;
+          border-radius: 5px;
+          box-shadow: 5px 5px 5px 1px #34bcaa;
+        }
+        #donations {
+          background-color: #333;
+          width: 90%;
+          height: 30vh;
+          margin: 50px auto;
+          padding-top: 20px;
+          border-radius: 5px;
+          box-shadow: 5px 5px 5px #34bcaa;
+        }
+        section {
+          background-image: url(./images/bg2.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 110vh;
+          width: 100%;
+        }
+        form input {
+          width: 200px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          border-radius: 2px;
+          border: none;
+        }
+        input::placeholder {
+          padding-left: 10px;
+        }
+        form {
+          padding-left: 25px;
+          padding-top: 30px;
+        }
+        form button {
+          padding: 5px;
+          border: none;
+          border-radius: 4px;
+          color: white;
+          background-color: #34bcaa;
+          cursor: pointer;
+        }
+        #hthW h2 {
+          margin-left: 20px;
+          font-size: 17px;
+        }
+        #donations h2 {
+          margin-left: 10px;
+          font-size: 17px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <img src="./images/hthLogo.png" alt="" />
+        <h4>HTH World</h4>
+      </div>
+      <button id="toggleButton">
+        <i class="fas fa-sun"></i>
+      </button>
+      <nav>
+        <ul id="navLinks">
+          <li><a href="">Home</a></li>
+          <li><a href="">Resources</a></li>
+          <li><a href="">Patners</a></li>
+          <li><a href="">HTH Coin</a></li>
+        </ul>
+        <div id="burger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <!-- Include your website header or navigation here -->
+      <?php include('includes/header.php'); ?>
+      <div class="ts-main-content">
+        <!-- Include your left sidebar or any content here -->
+        <?php include('includes/leftbar.php'); ?>
+      </div>
+
+      <div id="hthDonation">
+        <h1 id="h1">HTHW Donations</h1>
+      </div>
+      <div id="donationContract" style="display: flex">
+        <h2 id="h2">Donation Contract Information</h2>
+        <i
+          style="
+            color: white;
+
+            cursor: pointer;
+          "
+          class="fa-solid fa-caret-down"
+          onclick="showContent()"
+          id="dropDown"
+        ></i>
+      </div>
+      <div id="address">
+        <p id="p">
+          Contract Address: 0x5F89e9052b94E86eDd05EDb219CbAd40bA4A8B75
+        </p>
+        <p id="p">Owner Address: 0x6bf9c224cfd115484b4d1c22bc92c0c3461c28e1</p>
+      </div>
+
+      <div id="hthW">
+        <h2
+          style="
+            color: #debf12;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+              sans-serif;
+          "
+        >
+          Donate HTHW
+        </h2>
+        <form id="donationForm" onsubmit="donateEther(); return false;">
+          <input
+            type="number"
+            id="donationAmount"
+            step="0.01"
+            placeholder="Amount (HTHW)"
+            required
+          />
+          <button type="submit">Donate</button>
+        </form>
+      </div>
+
+      <div id="donations">
+        <h2>Your Donations</h2>
+        <table
+          class="table table-bordered"
+          style="
+            border: 2px solid #debf12;
+
+            margin: 20px auto;
+            width: 90%;
+          "
+        >
+          <thead>
+            <tr>
+              <th>Address</th>
+
+              <th>Donation (HTHW)</th>
+            </tr>
+          </thead>
+          <tbody id="donationListTable"></tbody>
+        </table>
+      </div>
+    </section>
+    <script>
+      document
+        .getElementById("toggleButton")
+        .addEventListener("click", function () {
+          var toggleButton = document.getElementById("toggleButton");
+          var bodyElement = document.querySelector("body");
+          if (bodyElement.classList.contains("nightMode")) {
+            bodyElement.classList.remove("nightMode");
+            toggleButton.innerHTML = '<i id = "sun" class = "fas fa-sun"><i/>';
+          } else {
+            bodyElement.classList.add("nightMode");
+            toggleButton.innerHTML =
+              '<i id = "moon" class = "fas fa-moon"><i/>';
+          }
+        });
+      // dropDown menu//
+      function showContent() {
+        var address = document.getElementById("address");
+        var dropDown = document.getElementById("dropDown");
+
+        address.classList.toggle("show");
+        dropDown.style.color = "#34bcaa";
+      }
+      // navigation bar//
+      var burgerIcon = document.getElementById("burger");
+      var navLinks = document.getElementById("navLinks");
+      var section = document.querySelector("section");
+      burgerIcon.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+        burgerIcon.classList.toggle("active-navbar");
+        section.classList.toggle("shift");
+      });
+      // Michael H
+      // Load the contract ABI from a JSON file
+      //  const contractAbi = <?php echo file_get_contents('./abi/donations.json'); ?>;
+
+      // Connect to the Ethereum network using web3.js
+      if (typeof web3 !== "undefined") {
+        web3 = new Web3(web3.currentProvider);
+      } else {
+        // If web3 is not present, provide an error message
+        console.error("Please install a web3 browser extension like MetaMask");
+      }
+
+      // Define your contract's address
+      const contractAddress = "0x5F89e9052b94E86eDd05EDb219CbAd40bA4A8B75";
+
+      const contract = new web3.eth.Contract(contractAbi, contractAddress);
+
+      // Function to donate Ether
+      async function donateEther() {
+        const donationAmount = document.getElementById("donationAmount").value;
+
+        // Get the current Ethereum account (assuming MetaMask is used)
+        const accounts = await ethereum.request({ method: "eth_accounts" });
+        const senderAddress = accounts[0];
+
+        try {
+          // Send the donation transaction
+          await contract.methods.donate().send({
+            from: senderAddress,
+            value: web3.utils.toWei(donationAmount, "ether"),
+          });
+
+          alert("Donation successful!");
+          displayDonations(); // Refresh the donation list after a donation
+        } catch (error) {
+          alert("Donation failed: " + error.message);
+        }
+      }
+
+      // Function to fetch and display the list of donors and their donations
+      async function displayDonations() {
+        const donators = await contract.methods.showAllDonators().call();
+
+        const donationListTable = document.getElementById("donationListTable");
+        donationListTable.innerHTML = "";
+
+        for (const donatorAddress of donators) {
+          const donationSum = await contract.methods
+            .showDonationSum(donatorAddress)
+            .call();
+          const donationRow = document.createElement("tr");
+
+          const addressCell = document.createElement("td");
+          addressCell.innerText = donatorAddress;
+
+          const donationCell = document.createElement("td");
+          donationCell.innerText =
+            web3.utils.fromWei(donationSum, "ether") + " HTHW";
+
+          donationRow.appendChild(addressCell);
+          donationRow.appendChild(donationCell);
+          donationListTable.appendChild(donationRow);
+        }
+      }
+
+      // Call the function to display the list of donations when the page loads
+      displayDonations();
+    </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/fileinput.js"></script>
+    <script src="js/chartData.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        setTimeout(function () {
+          $(".succWrap").slideUp("slow");
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>
