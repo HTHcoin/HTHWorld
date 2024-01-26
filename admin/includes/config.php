@@ -1,8 +1,8 @@
 ﻿<?php 
 // DB credentials.
 define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASS','caleadmin');
+define('DB_USER','hth_admin');
+define('DB_PASS','1223@Cale');
 define('DB_NAME','HTHWorld');
 // Establish database connection.
 try

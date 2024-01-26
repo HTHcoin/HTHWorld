@@ -39,6 +39,8 @@
 			</li>
 			<li><a href="wallet.php"><i class="fa fa-dollar"></i> &nbsp;Wallet</sup></a>
 			</li>
+<li><a href="http://206.189.231.104"><i class="fa fa-exchange"></i> &nbsp;Bridge</sup></a>
+			</li>
         <!-- Add more menu items as needed -->
 			</ul>
 </br>
